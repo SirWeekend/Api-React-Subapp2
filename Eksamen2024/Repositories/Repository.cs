@@ -5,7 +5,7 @@ using Eksamen2024.Data;
 
 namespace Eksamen2024.Repositories
 {
-    public class Repository<T> : GenRepository<T> where <T> : class
+    public class Repository <T> : GenRepository<T> where <T> : class
     {
         // Refering to the database context and represent the entity in the database
         protected readonly ItemDbContext _context; 

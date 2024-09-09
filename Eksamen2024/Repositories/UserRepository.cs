@@ -12,7 +12,7 @@ namespace Eksamen2024.Repositories
         public async Task<Users> GetByEmail(string Email)
         {
             // Using LINQ to locate a user based on their email adress
-            return await _context.Users.FirstOrDefault(u => u.Email = Email)
+            return await _context.Users.FirstOrDefault(u => u.Email = Email);
         }
-    }
+    } 
 }
