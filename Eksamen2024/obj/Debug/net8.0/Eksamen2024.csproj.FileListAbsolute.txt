@@ -160,3 +160,5 @@
 /Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/runtimes/win-x86/native/e_sqlite3.dll
+/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/Castle.Core.dll
+/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll

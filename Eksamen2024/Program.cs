@@ -1,4 +1,4 @@
-using Eksamen2024.Data;
+using Eksamen2024.DAL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
