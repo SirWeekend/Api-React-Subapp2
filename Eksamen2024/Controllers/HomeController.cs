@@ -1,10 +1,21 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Eksamen2024.Models;
+using Eksamen2024.DAL;
 
 namespace Eksamen2024.Controllers;
 
-public class HomeController : Controller
+
+    public class HomeController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+
+
+/*public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
@@ -28,4 +39,4 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-}
+}*/
