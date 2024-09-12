@@ -23,6 +23,6 @@ namespace Eksamen2024.Models
         public  virtual Users? Users { get; set; }
 
         // Navigation for the user comments, can be null if there are no comments
-        public virtual List<Comment>? Comments { get; set;}
+        public virtual ICollection<Comment>? Comments { get; set;}
     }
 }

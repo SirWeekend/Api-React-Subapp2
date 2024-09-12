@@ -11,14 +11,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eksamen2024.Migrations
 {
     [DbContext(typeof(ItemDbContext))]
-    [Migration("20240909102434_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240912153241_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true);
 
             modelBuilder.Entity("Eksamen2024.Models.Comment", b =>
                 {
@@ -80,7 +84,7 @@ namespace Eksamen2024.Migrations
 
                     b.HasIndex("UsersUserId");
 
-                    b.ToTable("Pinpoint");
+                    b.ToTable("Pinpoints");
                 });
 
             modelBuilder.Entity("Eksamen2024.Models.Users", b =>
@@ -115,7 +119,7 @@ namespace Eksamen2024.Migrations
                         .IsRequired();
 
                     b.HasOne("Eksamen2024.Models.Users", "Users")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UsersUserId");
 
                     b.Navigation("Pinpoint");
@@ -139,6 +143,8 @@ namespace Eksamen2024.Migrations
 
             modelBuilder.Entity("Eksamen2024.Models.Users", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Pinpoint");
                 });
 #pragma warning restore 612, 618

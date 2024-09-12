@@ -5,7 +5,7 @@
 namespace Eksamen2024.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,7 +26,7 @@ namespace Eksamen2024.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pinpoint",
+                name: "Pinpoints",
                 columns: table => new
                 {
                     PinpointId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -41,9 +41,9 @@ namespace Eksamen2024.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pinpoint", x => x.PinpointId);
+                    table.PrimaryKey("PK_Pinpoints", x => x.PinpointId);
                     table.ForeignKey(
-                        name: "FK_Pinpoint_Users_UsersUserId",
+                        name: "FK_Pinpoints_Users_UsersUserId",
                         column: x => x.UsersUserId,
                         principalTable: "Users",
                         principalColumn: "UserId");
@@ -64,9 +64,9 @@ namespace Eksamen2024.Migrations
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Pinpoint_PinpointId",
+                        name: "FK_Comments_Pinpoints_PinpointId",
                         column: x => x.PinpointId,
-                        principalTable: "Pinpoint",
+                        principalTable: "Pinpoints",
                         principalColumn: "PinpointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -87,8 +87,8 @@ namespace Eksamen2024.Migrations
                 column: "UsersUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pinpoint_UsersUserId",
-                table: "Pinpoint",
+                name: "IX_Pinpoints_UsersUserId",
+                table: "Pinpoints",
                 column: "UsersUserId");
         }
 
@@ -99,7 +99,7 @@ namespace Eksamen2024.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Pinpoint");
+                name: "Pinpoints");
 
             migrationBuilder.DropTable(
                 name: "Users");

@@ -14,7 +14,7 @@ namespace Eksamen2024.Models
         // Foreign key to the pinpoint the comment is applied to
         public int PinpointId { get; set; }
         // Can be null if there are no comment
-        public Pinpoint? Pinpoint { get; set; }
+        public virtual Pinpoint? Pinpoint { get; set; }
 
         // Foreign key to the user that comments
         public int UserId { get; set; }

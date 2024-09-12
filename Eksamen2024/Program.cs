@@ -13,6 +13,8 @@ builder.Services.AddDbContext<ItemDbContext>(options =>
 
 var app = builder.Build();
 
+DBInit.Seed(app);
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

@@ -12,6 +12,7 @@ namespace Eksamen2024.Models
         public string HashedPassword { get; set;} = string.Empty;
 
         // Navigation for pinpoint used by the user, can be null
-        public virtual List<Pinpoint>? Pinpoint { get; set; }
+        public virtual ICollection<Pinpoint>? Pinpoint { get; set; }
+        public virtual ICollection<Comment>? Comments { get; set; }
     }
 }

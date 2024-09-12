@@ -24,12 +24,23 @@ namespace Eksamen2024.DAL
                 context.SaveChanges();
             }
 
+            if (!context.Pinpoints.Any())
+            {
+                var pinpoints = new List<Pinpoint>
+                {
+                    new Pinpoint { Name = "Central Park", Latitude = 40.785091, Longitude = -73.968285, UserId = 1 },
+                    new Pinpoint { Name = "Statue of Liberty", Latitude = 40.689247, Longitude = -74.044502, UserId = 2 }
+                };
+                context.AddRange(pinpoints);
+                context.SaveChanges();
+            }
+
             if (!context.Comments.Any())
             {
                 var comments = new List<Comment>
                 {
-                    new Comment { Text = "This is a great place!", UserId = 1 },
-                    new Comment { Text = "Had a wonderful time!", UserId = 2 }
+                    new Comment { Text = "This is a great place!", UserId = 1, PinpointId = 1 },
+                    new Comment { Text = "Had a wonderful time!", UserId = 2, PinpointId = 2 }
                 };
                 context.AddRange(comments);
                 context.SaveChanges();
