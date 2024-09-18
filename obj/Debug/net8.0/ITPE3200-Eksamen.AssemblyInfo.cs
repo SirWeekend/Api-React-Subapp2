@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ITPE3200-Eksamen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35fb9e43f3eea7e4d7cea8712fc51515cee6232a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10090100166371b2a768f798eddf83e1aa45b1b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ITPE3200-Eksamen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ITPE3200-Eksamen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
