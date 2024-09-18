@@ -1,0 +1,6 @@
+@ITPE3200_Eksamen_HostAddress = http://localhost:5004
+
+GET {{ITPE3200_Eksamen_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
