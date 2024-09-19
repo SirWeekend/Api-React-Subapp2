@@ -15,26 +15,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-<<<<<<< HEAD
+
 		{BB134A8A-E8B6-411A-A155-C474A606E002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB134A8A-E8B6-411A-A155-C474A606E002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB134A8A-E8B6-411A-A155-C474A606E002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB134A8A-E8B6-411A-A155-C474A606E002}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{4E2258BD-F667-4ECC-8B91-421C5B3EA902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E2258BD-F667-4ECC-8B91-421C5B3EA902}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E2258BD-F667-4ECC-8B91-421C5B3EA902}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E2258BD-F667-4ECC-8B91-421C5B3EA902}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> origin/Ajax-Call
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-<<<<<<< HEAD
+
 		SolutionGuid = {DEFE9CB7-B1BA-4002-A79B-73B0379CD56E}
-=======
-		SolutionGuid = {199569C1-57E7-4086-8738-50636EE89FB5}
->>>>>>> origin/Ajax-Call
+
 	EndGlobalSection
 EndGlobal
