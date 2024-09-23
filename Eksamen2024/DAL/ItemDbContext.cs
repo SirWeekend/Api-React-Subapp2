@@ -13,6 +13,7 @@ public class ItemDbContext : DbContext
 	public DbSet<Users> Users { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Pinpoint> Pinpoints { get; set; }
+    public DbSet<Admin> Admins { get; set; }
     
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
