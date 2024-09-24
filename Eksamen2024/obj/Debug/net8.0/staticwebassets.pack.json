@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/createPinpoint.js",
+      "PackagePath": "staticwebassets/js/createPinpoint.js"
+    },
+    {
       "Id": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/testPinpoints.js",
+      "PackagePath": "staticwebassets/js/testPinpoints.js"
     },
     {
       "Id": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/LICENSE",

@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register PinpointRepository for Dependency Injection
+builder.Services.AddScoped<IPinpointRepository, PinpointRepository>();
+
 
 var app = builder.Build();
 

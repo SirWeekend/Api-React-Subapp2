@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PxbUzB/GfVb8653ipF1JZgaGIk00nmtndmRpQh/PWXQ=",
+  "Hash": "PR7m72w9qjdjhyEwNdZe2E6DrExz8Iz5XeDF3JUZKVU=",
   "Source": "Eksamen2024",
   "BasePath": "_content/Eksamen2024",
   "Mode": "Default",
@@ -93,6 +93,25 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
+      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/createPinpoint.js",
+      "SourceId": "Eksamen2024",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "BasePath": "_content/Eksamen2024",
+      "RelativePath": "js/createPinpoint.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/createPinpoint.js"
+    },
+    {
       "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/site.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/site.js"
+    },
+    {
+      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/testPinpoints.js",
+      "SourceId": "Eksamen2024",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "BasePath": "_content/Eksamen2024",
+      "RelativePath": "js/testPinpoints.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/testPinpoints.js"
     },
     {
       "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
