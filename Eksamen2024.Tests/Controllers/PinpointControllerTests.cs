@@ -32,5 +32,41 @@ public async Task GetPinpoints_ReturnsViewWithPinpoints()
             var returnValue = Assert.IsType<List<Pinpoint>>(okResult.Value);
             Assert.NotEmpty(returnValue);  // Ensure it returns some pinpoints
 }
+[Fact]
+public async Task CreatePinpoint_ValidModel()
+{
+    var mockRepo = new Mock<IPinpointRepository>();
+    var mockLogger = new Mock<ILogger<PinpointController>>();
+    var controller = new PinpointController(mockRepo.Object, mockLogger.Object);
+
+    var newPinpoint = new Pinpoint { PinpointId = 1, Name = "Test" } ;
+
+    //mockRepo.Setup(repo => repo.Create()).ReturnsAsync(pinpoints);
+    var result = await controller.CreatePinpoint(newPinpoint);
+
+    var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
+    Assert.Equal("GetPinpoint", createdAtActionResult.ActionName);
+    Assert.NotNull(createdAtActionResult.Value);
+    Assert.Equal(newPinpoint.PinpointId, ((Pinpoint)createdAtActionResult.Value).PinpointId);
+}
+[Fact]
+public async Task CreatePinpoint_InValidModel()
+{
+    var mockRepo = new Mock<IPinpointRepository>();
+    var mockLogger = new Mock<ILogger<PinpointController>>();
+    var controller = new PinpointController(mockRepo.Object, mockLogger.Object);
+
+    controller.ModelState.AddModelError("Name", "Required");
+
+    var newPinpoint = new Pinpoint { PinpointId = 1 };
+
+            // Act
+            var result = await controller.CreatePinpoint(newPinpoint);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.IsType<SerializableError>(badRequestResult.Value);
+
+}
 
 }
