@@ -9,14 +9,14 @@ namespace Eksamen2024.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PinpointsController : ControllerBase
+    public class PinpointController : ControllerBase
     {
         // Dependency injection of the repository
         private readonly IPinpointRepository _pinpointRepository;
-        private readonly ILogger<PinpointsController> _logger;
+        private readonly ILogger<PinpointController> _logger;
 
         // Constructor for dependency injection
-        public PinpointsController(IPinpointRepository pinpointRepository, ILogger<PinpointsController> logger)
+        public PinpointController(IPinpointRepository pinpointRepository, ILogger<PinpointController> logger)
         {
             _pinpointRepository = pinpointRepository;
             _logger = logger;
