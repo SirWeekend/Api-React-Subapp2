@@ -1,5 +1,6 @@
 using Eksamen2024.DAL;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,13 @@ builder.Services.AddDbContext<ItemDbContext>(options =>
 
 // Register PinpointRepository for Dependency Injection
 builder.Services.AddScoped<IPinpointRepository, PinpointRepository>();
+
+var loggerConfiguration = new LoggerConfiguration()
+    .MinimumLevel.Information() 
+    .WriteTo.File($"Logs/app_{DateTime.Now:yyyyMMdd_HHmmss}.log");
+
+var logger = loggerConfiguration.CreateLogger();
+builder.Logging.AddSerilog(logger);
 
 
 var app = builder.Build();

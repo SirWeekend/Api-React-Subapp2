@@ -326,3 +326,6 @@
 /Users/75vikpet/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/Eksamen2024.pdb
 /Users/75vikpet/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/Eksamen2024.genruntimeconfig.cache
 /Users/75vikpet/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/ref/Eksamen2024.dll
+/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/Serilog.dll
+/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/Serilog.Extensions.Logging.dll
+/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/bin/Debug/net8.0/Serilog.Sinks.File.dll
