@@ -4514,19 +4514,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/75vikpet/.nuget/packages/": {}
+    "C:\\Users\\danil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj",
+      "projectUniqueName": "C:\\Users\\danil\\Desktop\\algdat\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
       "projectName": "Eksamen2024",
-      "projectPath": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj",
-      "packagesPath": "/Users/75vikpet/.nuget/packages/",
-      "outputPath": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/",
+      "projectPath": "C:\\Users\\danil\\Desktop\\algdat\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
+      "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\danil\\Desktop\\algdat\\ITPE3200-Eksamen\\Eksamen2024\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/75vikpet/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4597,7 +4597,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
