@@ -10,6 +10,16 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Legg til CORS-policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -27,6 +37,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Bruk CORS-policy
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

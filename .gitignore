@@ -5,3 +5,7 @@
 *.suo
 *.vs/
 /node_modules
+Eksamen2024/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Eksamen2024.props
+Eksamen2024/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Eksamen2024.props
+Eksamen2024/bin/Debug/net8.0/Eksamen2024.deps.json
+Eksamen2024/bin/Debug/net8.0/Eksamen2024.dll
