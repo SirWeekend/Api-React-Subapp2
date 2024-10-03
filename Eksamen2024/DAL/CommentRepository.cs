@@ -7,9 +7,9 @@ namespace Eksamen2024.DAL
 {
     public class CommentRepository : ICommentRepository
     {
-        private readonly ItemDbContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public CommentRepository(ItemDbContext db)
+        public CommentRepository(ApplicationDbContext db)
         {
             _db = db;
         }

@@ -9,16 +9,16 @@ namespace Eksamen2024.DAL
         public static void Seed(IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.CreateScope();
-            ItemDbContext context = serviceScope.ServiceProvider.GetRequiredService<ItemDbContext>();
+            ApplicationDbContext context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
             if (!context.Users.Any())
             {
-                var users = new List<Users>
+                var users = new List<User>
                 {
-                    new Users { Username = "Alice Hansen", Email = "alice@example.com" },
-                    new Users { Username = "Bob Johansen", Email = "bob@example.com" }
+                    new User { Username = "Alice Hansen", Email = "alice@example.com" },
+                    new User { Username = "Bob Johansen", Email = "bob@example.com" }
                 };
                 context.AddRange(users);
                 context.SaveChanges();

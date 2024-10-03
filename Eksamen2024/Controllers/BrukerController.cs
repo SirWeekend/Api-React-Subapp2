@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Eksamen2024.Models;
 using Eksamen2024.Helpers;
+using Eksamen2024.DAL;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -36,7 +37,7 @@ public class BrukerController : Controller
                 return View();
             }
 
-            var isPasswordValid = PasswordHelper.VerifyPassword(password, user.PasswordHash);
+            var isPasswordValid = PasswordHelper.VerifyPassword(password, user.HashedPassword);
             if (!isPasswordValid)
             {
                 ModelState.AddModelError("", "Invalid login attempt.");
@@ -45,7 +46,8 @@ public class BrukerController : Controller
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Email, user.Email)
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -66,7 +68,7 @@ public class BrukerController : Controller
     }
 
     [HttpPost]
-    public IActionResult Register(string username, string password)
+    public IActionResult Register(string username, string email, string password)
     {
         if(ModelState.IsValid)
         {
@@ -77,11 +79,12 @@ public class BrukerController : Controller
                 return View();
             }
 
-            var passwordHash = PasswordHelper.HashPassword(password);
+            var hashedPassword = PasswordHelper.HashPassword(password);
             var newUser = new User
             {
                 Username = username,
-                PasswordHash = passwordHash
+                Email = email,
+                HashedPassword = hashedPassword
             };
 
             _dbContext.Users.Add(newUser);
