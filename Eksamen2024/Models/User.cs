@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Eksamen2024.Models
 {
-    public class Users
+    public class User
     {
         [Key] // Marking UserId as primary key
         public int UserId { get; set; }

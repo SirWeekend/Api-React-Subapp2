@@ -18,7 +18,7 @@ namespace Eksamen2024.Controllers;
     public void CreateUsers()
     {
         // Given
-        var user = new Users
+        var user = new User
         {
             UserId = 1,
             Username = "Moren Din",
@@ -37,7 +37,7 @@ namespace Eksamen2024.Controllers;
     public void CreateUsers_NotworkingUsername()
     {
         // Given
-         var user = new Users
+         var user = new User
         {
             UserId = 1,
             Email = "Farendin@morendin.com",
@@ -61,7 +61,7 @@ namespace Eksamen2024.Controllers;
     public void CreateUsers_NotworkingEmail()
     {
         // Given
-         var user = new Users
+         var user = new User
         {
             UserId = 1,
             Username = "HAHAHAHA",
@@ -85,7 +85,7 @@ namespace Eksamen2024.Controllers;
     public void CreateUsers_NotworkingPassword()
     {
         // Given
-         var user = new Users
+         var user = new User
         {
             UserId = 1,
             Email = "Farendin@morendin.com",
@@ -107,7 +107,5 @@ namespace Eksamen2024.Controllers;
     {
         Assert.Fail("ValidationResults was null or empty");
     }
-                
-
         }
     }
