@@ -13,6 +13,7 @@ MyMapAppDb.db-wal
 Eksamen2024.dll
 Eksamen2024.pdb
 Eksamen2024.staticwebassets.runtime.json
-*.csproj
 staticwebassets/
+.DS_Store
+
 
