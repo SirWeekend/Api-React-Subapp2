@@ -496,3 +496,15 @@
 /Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/Eksamen2024.genruntimeconfig.cache
 /Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/ref/Eksamen2024.dll
 >>>>>>> main
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.csproj.AssemblyReference.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.AssemblyInfoInputs.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.AssemblyInfo.cs
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.csproj.CoreCompileInputs.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.MvcApplicationPartsAssemblyInfo.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.RazorAssemblyInfo.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.RazorAssemblyInfo.cs
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.sourcelink.json
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.dll
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/refint/Eksamen2024.dll
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/Debug/net8.0/Eksamen2024.pdb

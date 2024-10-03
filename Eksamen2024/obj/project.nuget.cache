@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "x6BYbl+H490=",
-=======
-  "dgSpecHash": "riUuJnWZQxs=",
->>>>>>> main
   "success": true,
   "projectFilePath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj",
   "expectedPackageFiles": [
@@ -97,5 +93,12 @@
     "/Users/jonasfjelstad/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/jonasfjelstad/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

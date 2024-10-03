@@ -1,0 +1,10 @@
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.csproj.AssemblyReference.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.AssemblyInfoInputs.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.AssemblyInfo.cs
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.csproj.CoreCompileInputs.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.MvcApplicationPartsAssemblyInfo.cs
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.MvcApplicationPartsAssemblyInfo.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.RazorAssemblyInfo.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.RazorAssemblyInfo.cs
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/obj/Debug/net8.0/ITPE3200-Eksamen.sourcelink.json
