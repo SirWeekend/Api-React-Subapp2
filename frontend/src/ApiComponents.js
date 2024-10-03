@@ -6,7 +6,7 @@ const ApiComponent = () => {
 
     useEffect(() => {
         // Gjør API-kall med Axios når komponenten monteres
-        axios.get('http://localhost:5091/api/pointsofinterest') // Endre til riktig port om nødvendig
+        axios.get('http://localhost:5091/api/pinpoint') // Endre til riktig port om nødvendig
             .then(response => {
                 setData(response.data);
             })
