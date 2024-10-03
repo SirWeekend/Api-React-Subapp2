@@ -177,3 +177,12 @@
 /Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.pdb
 /Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.genruntimeconfig.cache
 /Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/obj/Debug/net8.0/ref/Eksamen2024.Tests.dll
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.csproj.AssemblyReference.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.AssemblyInfoInputs.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.AssemblyInfo.cs
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.csproj.CoreCompileInputs.cache
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.sourcelink.json
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.dll
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/refint/Eksamen2024.Tests.dll
+/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/Debug/net8.0/Eksamen2024.Tests.pdb
