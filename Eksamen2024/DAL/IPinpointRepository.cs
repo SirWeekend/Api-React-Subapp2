@@ -2,6 +2,7 @@ using Eksamen2024.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+
 namespace Eksamen2024.DAL
 {
     public interface IPinpointRepository
