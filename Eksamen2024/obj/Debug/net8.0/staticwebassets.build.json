@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "PR7m72w9qjdjhyEwNdZe2E6DrExz8Iz5XeDF3JUZKVU=",
+=======
+  "Hash": "MnCno+lqytU2C8fDpJVLuEy2GIYPWiF1WvvL02DfgGA=",
+>>>>>>> main
   "Source": "Eksamen2024",
   "BasePath": "_content/Eksamen2024",
   "Mode": "Default",
@@ -10,17 +14,17 @@
     {
       "Name": "Eksamen2024/wwwroot",
       "Source": "Eksamen2024",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/bundle/Eksamen2024.styles.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/bundle/Eksamen2024.styles.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Computed",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/bundle/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/bundle/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "Eksamen2024.styles.css",
       "AssetKind": "All",
@@ -33,13 +37,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/bundle/Eksamen2024.styles.css"
+      "OriginalItemSpec": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/bundle/Eksamen2024.styles.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/projectbundle/Eksamen2024.bundle.scp.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/projectbundle/Eksamen2024.bundle.scp.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Computed",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/projectbundle/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/projectbundle/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "Eksamen2024.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +56,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/projectbundle/Eksamen2024.bundle.scp.css"
+      "OriginalItemSpec": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/Debug/net8.0/scopedcss/projectbundle/Eksamen2024.bundle.scp.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/css/site.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/css/site.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -74,10 +78,10 @@
       "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/favicon.ico",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/favicon.ico",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -93,6 +97,7 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
+<<<<<<< HEAD
       "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/createPinpoint.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
@@ -113,9 +118,12 @@
     },
     {
       "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/site.js",
+=======
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/site.js",
+>>>>>>> main
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -131,6 +139,7 @@
       "OriginalItemSpec": "wwwroot/js/site.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/js/testPinpoints.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
@@ -151,9 +160,12 @@
     },
     {
       "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+=======
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+>>>>>>> main
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -169,10 +181,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -188,10 +200,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -207,10 +219,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -226,10 +238,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -245,10 +257,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -264,10 +276,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -283,10 +295,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -302,10 +314,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -321,10 +333,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -340,10 +352,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -359,10 +371,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -378,10 +390,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -397,10 +409,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -416,10 +428,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -435,10 +447,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -454,10 +466,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -473,10 +485,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -492,10 +504,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -511,10 +523,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -530,10 +542,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -549,10 +561,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -568,10 +580,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -587,10 +599,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -606,10 +618,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -625,10 +637,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -644,10 +656,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -663,10 +675,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -682,10 +694,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -701,10 +713,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -720,10 +732,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -739,10 +751,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -758,10 +770,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -777,10 +789,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -796,10 +808,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -815,10 +827,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -834,10 +846,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -853,10 +865,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -872,10 +884,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -891,10 +903,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -910,10 +922,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -929,10 +941,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -948,10 +960,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.js.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -967,10 +979,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -986,10 +998,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/LICENSE",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/bootstrap/LICENSE",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1005,10 +1017,10 @@
       "OriginalItemSpec": "wwwroot/lib/bootstrap/LICENSE"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1024,10 +1036,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1043,10 +1055,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1062,10 +1074,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/additional-methods.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1081,10 +1093,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/additional-methods.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1100,10 +1112,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/additional-methods.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1119,10 +1131,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/jquery.validate.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1138,10 +1150,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation/dist/jquery.validate.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/LICENSE.md",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery-validation/LICENSE.md",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1157,10 +1169,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery-validation/LICENSE.md"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/dist/jquery.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/dist/jquery.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1176,10 +1188,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery/dist/jquery.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/dist/jquery.min.js",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/dist/jquery.min.js",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1195,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery/dist/jquery.min.js"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/dist/jquery.min.map",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/dist/jquery.min.map",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1214,10 +1226,10 @@
       "OriginalItemSpec": "wwwroot/lib/jquery/dist/jquery.min.map"
     },
     {
-      "Identity": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/LICENSE.txt",
+      "Identity": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/lib/jquery/LICENSE.txt",
       "SourceId": "Eksamen2024",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
+      "ContentRoot": "/Users/75vikpet/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/wwwroot/",
       "BasePath": "_content/Eksamen2024",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",

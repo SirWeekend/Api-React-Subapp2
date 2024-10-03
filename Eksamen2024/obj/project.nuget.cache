@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "x6BYbl+H490=",
+=======
+  "dgSpecHash": "riUuJnWZQxs=",
+>>>>>>> main
   "success": true,
   "projectFilePath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj",
   "expectedPackageFiles": [
