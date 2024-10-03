@@ -4514,19 +4514,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danil\\.nuget\\packages\\": {}
+    "C:\\Users\\Danil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danil\\Desktop\\algdat\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
+      "projectUniqueName": "C:\\Users\\Danil\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
       "projectName": "Eksamen2024",
-      "projectPath": "C:\\Users\\danil\\Desktop\\algdat\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
-      "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danil\\Desktop\\algdat\\ITPE3200-Eksamen\\Eksamen2024\\obj\\",
+      "projectPath": "C:\\Users\\Danil\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
+      "packagesPath": "C:\\Users\\Danil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Danil\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\danil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Danil\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

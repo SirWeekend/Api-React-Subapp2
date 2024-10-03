@@ -36,8 +36,8 @@ public class BrukerController : Controller
                 return View();
             }
 
-            var passwordHash = PasswordHelper.HashPassword(password);
-            if (passwordHash != user.PasswordHash)
+            var isPasswordValid = PasswordHelper.VerifyPassword(password, user.PasswordHash);
+            if (!isPasswordValid)
             {
                 ModelState.AddModelError("", "Invalid login attempt.");
                 return View();
@@ -73,6 +73,7 @@ public class BrukerController : Controller
             var existingUser = _dbContext.Users.SingleOrDefault(u => u.Username == username);
             if(existingUser != null)
             {
+                ModelState.AddModelError("", "Username already exists.");
                 return View();
             }
 
@@ -86,7 +87,7 @@ public class BrukerController : Controller
             _dbContext.Users.Add(newUser);
             _dbContext.SaveChanges();
 
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login", "Bruker");
         }
 
         return View();
@@ -95,6 +96,6 @@ public class BrukerController : Controller
     public IActionResult Logout()
     {
         HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Login", "Account");
+        return RedirectToAction("Login", "Bruker");
     }
 }

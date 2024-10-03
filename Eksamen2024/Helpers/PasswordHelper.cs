@@ -5,6 +5,10 @@ namespace Eksamen2024.Helpers
 {
     public class PasswordHelper
     {
+        public static bool VerifyPassword(string password, string storedHash)
+        {
+            return HashPassword(password) == storedHash;
+        }
         public static String HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())

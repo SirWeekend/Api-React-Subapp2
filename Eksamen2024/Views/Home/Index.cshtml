@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,7 +10,22 @@
 
 <h2>Explore the Map</h2>
 
-<div id="map" style="height: 600px; width: 100%;"></div>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello, @User.Identity.Name!</p>
+
+
+    <form asp-controller="Bruker" asp-action="Logout" method="post">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+}
+else
+{
+    <a asp-controller="Bruker" asp-action="Login" class="btn btn-primary">Login</a>
+    <a asp-controller="Bruker" asp-action="Register" class="btn btn-secondary">Register</a>
+}
+
+<div id="map" style="height: 600px; width: 100%; margin-top: 20px;"></div>
 
 <script>
     // Initialize the map and set its view to a default location (latitude, longitude)
