@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/Eksamen2024.Tests.csproj": {}
+    "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj": {}
   },
   "projects": {
-    "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/Eksamen2024.Tests.csproj": {
+    "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
+        "projectUniqueName": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
         "projectName": "Eksamen2024.Tests",
-        "projectPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
+        "projectPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
         "packagesPath": "/Users/jonasfjelstad/.nuget/packages/",
-        "outputPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/obj/",
+        "outputPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jonasfjelstad/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj": {
-                "projectPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj"
+              "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj": {
+                "projectPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj"
               }
             }
           }
@@ -92,14 +92,14 @@
         }
       }
     },
-    "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj": {
+    "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj",
+        "projectUniqueName": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj",
         "projectName": "Eksamen2024",
-        "projectPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj",
+        "projectPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj",
         "packagesPath": "/Users/jonasfjelstad/.nuget/packages/",
-        "outputPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/",
+        "outputPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jonasfjelstad/.nuget/NuGet/NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ASufUfgdTH8=",
+  "dgSpecHash": "sQ9u3cEENf8=",
   "success": true,
-  "projectFilePath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
+  "projectFilePath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/jonasfjelstad/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/jonasfjelstad/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
