@@ -2,26 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-</head>
-
 <h2>Explore the Map</h2>
 
 <div id="map" style="height: 601px; width: 100%;"></div>
 
-<script>
-    // Initialize the map and set its view to a default location (latitude, longitude)
-    var map = L.map('map').setView([40.785091, -73.968285], 13);
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    // Add the OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-</script>
+<!-- Form for adding a new pinpoint -->
+<h3>Add a New Pinpoint</h3>
+<form id="pinpointForm">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+    </div>
+    <div>
+        <label for="latitude">Latitude:</label>
+        <input type="number" step="any" id="latitude" name="latitude" required />
+    </div>
+    <div>
+        <label for="longitude">Longitude:</label>
+        <input type="number" step="any" id="longitude" name="longitude" required />
+    </div>
+    <button type="submit">Create Pinpoint</button>
+</form>
+
+<script src="~/js/testPinpoints.js"></script>
 
