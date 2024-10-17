@@ -10,7 +10,7 @@ public class ItemDbContext : DbContext
         // Database.EnsureCreated();  // Remove this line if you use migrations
 	}
 
-	public DbSet<Users> Users { get; set; }
+	public DbSet<User> Users { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Pinpoint> Pinpoints { get; set; }
     public DbSet<Admin> Admins { get; set; }
