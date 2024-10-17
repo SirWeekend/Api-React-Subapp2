@@ -7,9 +7,9 @@ namespace Eksamen2024.DAL
 {
     public class PinpointRepository : IPinpointRepository
     {
-        private readonly ItemDbContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public PinpointRepository(ItemDbContext db)
+        public PinpointRepository(ApplicationDbContext db)
         {
             _db = db;
         }

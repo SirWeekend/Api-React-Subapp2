@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eksamen2024.Migrations
 {
-    [DbContext(typeof(ItemDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240912153241_InitialMigration")]
     partial class InitialMigration
     {
