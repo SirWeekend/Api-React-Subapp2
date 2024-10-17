@@ -49,23 +49,23 @@ public class AdminRepository : IAdminRepository
     }
 
     // Methods to manage Users (already implemented)
-    public async Task<IEnumerable<Users>> GetAllUsers()
+    public async Task<IEnumerable<User>> GetAllUsers()
     {
         return await _db.Users.ToListAsync();
     }
 
-    public async Task<Users?> GetUserById(int id)
+    public async Task<User?> GetUserById(int id)
     {
         return await _db.Users.FindAsync(id);
     }
 
-    public async Task CreateUser(Users user)
+    public async Task CreateUser(User user)
     {
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
     }
 
-    public async Task UpdateUser(Users user)
+    public async Task UpdateUser(User user)
     {
         _db.Users.Update(user);
         await _db.SaveChangesAsync();

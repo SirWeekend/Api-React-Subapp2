@@ -18,7 +18,8 @@
             <div id= meny-ikon>
                 <li class="list-group-item">
                     <i class="fas fa-bars"></i>
-                    <a href="#">Meny</a></li>
+                    <a asp-controller="Home" asp-action="Index">Meny</a>
+                    </li>
             </div>
             <div id= lagret-ikon>
                 <i class="fas fa-bookmark"></i>     
@@ -30,9 +31,8 @@
             </div>  
         </ul>
         
-        <!-- "Logg inn"-knappen som skal plasseres nederst -->
         <div id="login-link">
-            <button class="btn btn-primary">Logg inn</button>
+            <li class="list-group-item"><a asp-controller="Bruker" asp-action="Login">Logg inn</a></li>
         </div>
     </div>
 

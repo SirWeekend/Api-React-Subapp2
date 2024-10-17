@@ -12,9 +12,9 @@ public interface IAdminRepository
     Task<bool> DeleteAdmin(int id);
 
     // User management methods
-    Task<IEnumerable<Users>> GetAllUsers();
-    Task<Users?> GetUserById(int id);
-    Task CreateUser(Users user);
-    Task UpdateUser(Users user);
+    Task<IEnumerable<User>> GetAllUsers();
+    Task<User?> GetUserById(int id);
+    Task CreateUser(User user);
+    Task UpdateUser(User user);
     Task<bool> DeleteUser(int id);
 }
