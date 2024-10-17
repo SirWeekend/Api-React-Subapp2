@@ -21,10 +21,36 @@ namespace Eksamen2024.Migrations
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true);
 
+            modelBuilder.Entity("Eksamen2024.Models.Admin", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HashedPassword")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Admins");
+                });
+
             modelBuilder.Entity("Eksamen2024.Models.Comment", b =>
                 {
                     b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("AdminId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("PinpointId")
@@ -42,6 +68,8 @@ namespace Eksamen2024.Migrations
 
                     b.HasKey("CommentId");
 
+                    b.HasIndex("AdminId");
+
                     b.HasIndex("PinpointId");
 
                     b.HasIndex("UsersUserId");
@@ -53,6 +81,9 @@ namespace Eksamen2024.Migrations
                 {
                     b.Property<int>("PinpointId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("AdminId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -78,6 +109,8 @@ namespace Eksamen2024.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("PinpointId");
+
+                    b.HasIndex("AdminId");
 
                     b.HasIndex("UsersUserId");
 
@@ -109,6 +142,10 @@ namespace Eksamen2024.Migrations
 
             modelBuilder.Entity("Eksamen2024.Models.Comment", b =>
                 {
+                    b.HasOne("Eksamen2024.Models.Admin", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("AdminId");
+
                     b.HasOne("Eksamen2024.Models.Pinpoint", "Pinpoint")
                         .WithMany("Comments")
                         .HasForeignKey("PinpointId")
@@ -126,11 +163,22 @@ namespace Eksamen2024.Migrations
 
             modelBuilder.Entity("Eksamen2024.Models.Pinpoint", b =>
                 {
+                    b.HasOne("Eksamen2024.Models.Admin", null)
+                        .WithMany("Pinpoint")
+                        .HasForeignKey("AdminId");
+
                     b.HasOne("Eksamen2024.Models.Users", "Users")
                         .WithMany("Pinpoint")
                         .HasForeignKey("UsersUserId");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Eksamen2024.Models.Admin", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Pinpoint");
                 });
 
             modelBuilder.Entity("Eksamen2024.Models.Pinpoint", b =>

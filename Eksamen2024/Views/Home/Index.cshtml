@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 ﻿
 @{
     ViewData["Title"] = "Home Page";
 }
+=======
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
 
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-</head>
+<div id="map" style="height: 601px; width: 100%;"></div>
+>>>>>>> main
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<!-- Form for adding a new pinpoint -->
+
+<<<<<<< HEAD
 <h2>Explore the Map</h2>
 
 @if (User.Identity.IsAuthenticated)
@@ -36,4 +44,7 @@ else
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 </script>
+=======
+>>>>>>> main
 
+<script src="~/js/testPinpoints.js"></script>

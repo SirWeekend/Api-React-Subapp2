@@ -5,5 +5,13 @@
 *.log
 *.user
 *.suo
-*.vs/
+*.vs
 /node_modules
+
+*/AssemblyInfo.cs
+MyMapAppDb.db-Shm
+MyMapAppDb.db-wal
+Eksamen2024.dll
+Eksamen2024.pdb
+Eksamen2024.staticwebassets.runtime.json
+staticwebassets/
