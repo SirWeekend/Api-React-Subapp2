@@ -8635,19 +8635,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/jonasfjelstad/.nuget/packages/": {}
+    "C:\\Users\\fredr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024.Tests\\Eksamen2024.Tests.csproj",
       "projectName": "Eksamen2024.Tests",
-      "projectPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/Eksamen2024.Tests.csproj",
-      "packagesPath": "/Users/jonasfjelstad/.nuget/packages/",
-      "outputPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024.Tests/obj/",
+      "projectPath": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024.Tests\\Eksamen2024.Tests.csproj",
+      "packagesPath": "C:\\Users\\fredr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jonasfjelstad/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\fredr\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -8659,8 +8659,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj": {
-              "projectPath": "/Users/jonasfjelstad/Documents/GitHub/Eksamen2024/Eksamen2024/Eksamen2024.csproj"
+            "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj": {
+              "projectPath": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj"
             }
           }
         }
@@ -8721,7 +8721,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
