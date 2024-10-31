@@ -21,3 +21,5 @@ Eksamen2024.Tests.AssemblyInfo.cs
 *.AssemblyInfo.cs
 Eksamen2024.sln
 
+
+.fake
