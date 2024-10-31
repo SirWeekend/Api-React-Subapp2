@@ -1,37 +1,10 @@
-<<<<<<< HEAD
-﻿
 @{
     ViewData["Title"] = "Home Page";
 }
-=======
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div id="map" style="height: 601px; width: 100%;"></div>
->>>>>>> main
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <!-- Form for adding a new pinpoint -->
-
-<<<<<<< HEAD
-<h2>Explore the Map</h2>
-
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Hello, @User.Identity.Name!</p>
-
-
-    <form asp-controller="Bruker" asp-action="Logout" method="post">
-        <button type="submit" class="btn btn-danger">Logout</button>
-    </form>
-}
-else
-{
-    <a asp-controller="Bruker" asp-action="Login" class="btn btn-primary">Login</a>
-    <a asp-controller="Bruker" asp-action="Register" class="btn btn-secondary">Register</a>
-}
 
 <div id="map" style="height: 600px; width: 100%; margin-top: 20px;"></div>
 
@@ -44,7 +17,5 @@ else
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 </script>
-=======
->>>>>>> main
 
 <script src="~/js/testPinpoints.js"></script>
