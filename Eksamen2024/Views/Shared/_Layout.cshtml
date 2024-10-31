@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Eksamen2024.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -27,20 +29,39 @@
                         </li>
                     </ul>
                 </div>
+=======
+    
+  <div class="container-fluid">
+    <!-- Sidebar -->
+    <div class="col-md-3" id="sidebar">
+        <ul class="list-group">
+            <div id= meny-ikon>
+                <li class="list-group-item">
+                    <i class="fas fa-home"></i>
+                    <a asp-controller="Home" asp-action="Index">Hjem</a>
+                    </li>
+>>>>>>> main
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <div id= lagret-ikon>
+                <i class="fas fa-bookmark"></i>     
+                <li class="list-group-item"><a href="#">Lagret</a></li>
+            </div>     
+            <div id= admin-ikon>
+                <i class= "fas fa-cog"></i>
+                <li class= "list-group-item"><a href="#">Admin</a></li>
+            </div>  
+        </ul>
+        
+        <div id="login-link">
+            <li class="list-group-item"><a asp-controller="Bruker" asp-action="Login">Logg inn</a></li>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Eksamen2024 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <!-- Main Content (Kartet) -->
+    <div class="col-md-9" id="main-content">
+        <div id="map"> @RenderBody()</div> <!-- Kartet må være her -->
+    </div>
+</div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

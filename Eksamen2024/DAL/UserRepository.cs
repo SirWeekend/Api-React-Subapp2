@@ -5,9 +5,9 @@ namespace Eksamen2024.DAL;
 
 public class UserRepository : IUserRepository
 {
-    private readonly ItemDbContext _db;
+    private readonly ApplicationDbContext _db;
 
-    public UserRepository(ItemDbContext db)
+    public UserRepository(ApplicationDbContext db)
     {
         _db = db;
     }

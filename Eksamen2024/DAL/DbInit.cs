@@ -9,7 +9,7 @@ namespace Eksamen2024.DAL
         public static void Seed(IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.CreateScope();
-            ItemDbContext context = serviceScope.ServiceProvider.GetRequiredService<ItemDbContext>();
+            ApplicationDbContext context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
