@@ -1,14 +1,17 @@
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Registrer";
 }
 
-<!-- Login-boksen som skal være over kartet -->
 <div class="loginregistrering-container">
     <div class="loginregistrering-box">
-        <h2>Logg inn</h2>
+        <h2>Registrer deg her!</h2>
         <form asp-controller="Bruker" asp-action="Login" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="E-mail">E-mail</label>
                 <input type="text" name="username" class="form-control" required />
             </div>
             <div class="form-group">
