@@ -19,10 +19,6 @@ namespace Eksamen2024.Models
         // Foreign key to the user that comments
         public int UserId { get; set; }
         // Can be null if there are no comments and no user
-<<<<<<< HEAD
-        public virtual User? Users { get; set; }
-=======
         public virtual User? User { get; set; }
->>>>>>> main
     }
 }

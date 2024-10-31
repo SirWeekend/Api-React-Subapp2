@@ -20,11 +20,7 @@ namespace Eksamen2024.Models
         // Foreign key to the user for the pinpoint
         public int UserId { get; set; }
         // Can be null if there are no users
-<<<<<<< HEAD
-        public  virtual User? Users { get; set; }
-=======
         public  virtual User? User { get; set; }
->>>>>>> main
 
         // Navigation for the user comments, can be null if there are no comments
         public virtual ICollection<Comment>? Comments { get; set;}
