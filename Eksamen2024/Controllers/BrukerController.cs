@@ -62,13 +62,13 @@ public class BrukerController : Controller
     }
 
     [HttpGet]
-    public IActionResult Register()
+    public IActionResult Registrer()
     {
         return View();
     }
 
     [HttpPost]
-    public IActionResult Register(string username, string email, string password)
+    public IActionResult Registrer(string username, string email, string password)
     {
         if(ModelState.IsValid)
         {

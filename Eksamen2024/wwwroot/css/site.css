@@ -22,7 +22,7 @@ body {
 }
 
 /* Login-containeren sentrerer boksen */
-.login-container {
+.loginregistrering-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@ body {
 }
 
 /* Gjennomsiktig login-boks */
-.login-box {
+.loginregistrering-box {
   background-color: rgba(255, 255, 255, 0.8); /* Semi-gjennomsiktig hvit bakgrunn */
   padding: 30px;
   border-radius: 15px;
