@@ -1,3 +1,6 @@
+// Import Axios
+import axios from 'axios';
+
 // Handle form submission for creating a new pinpoint
 document.getElementById('pinpointForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -16,25 +19,15 @@ document.getElementById('pinpointForm').addEventListener('submit', function (eve
         longitude: longitude
     };
 
-    // Send the data to the API using fetch
-    fetch('/api/pinpoints', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(pinpoint)
-    })
-    .then(response => {
-        if (response.ok) {
+    // Send the data to the API using Axios
+    axios.post('/api/pinpoints', pinpoint)
+        .then(response => {
             alert('Pinpoint created successfully!');
             // Optionally, reload the page or add the new pinpoint to the map dynamically
             loadPoints();  // Re-load the points to show the newly created one
-        } else {
+        })
+        .catch(error => {
+            console.error('Error:', error);
             alert('Error creating pinpoint. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error creating pinpoint. Please try again.');
-    });
+        });
 });
