@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using Eksamen2024.DAL;
 using Eksamen2024.Models;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace Eksamen2024.Controllers
 {
@@ -63,25 +67,27 @@ namespace Eksamen2024.Controllers
         }
 
         // POST method for creating a new pinpoint
-        [HttpPost]
+       [HttpPost]
+       [AllowAnonymous]
         public async Task<IActionResult> CreatePinpoint([FromBody] Pinpoint pinpoint)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            try
-            {
-                await _pinpointRepository.Create(pinpoint);
-                return CreatedAtAction(nameof(GetPinpoint), new { id = pinpoint.PinpointId }, pinpoint);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Error creating pinpoint: {ex}");
-                return StatusCode(500, "Internal server error");
-            }
+        if (!ModelState.IsValid)
+        {
+        return BadRequest(ModelState);
         }
+
+        try
+        {
+            await _pinpointRepository.Create(pinpoint);
+            return CreatedAtAction(nameof(GetPinpoint), new { id = pinpoint.PinpointId }, pinpoint);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error creating pinpoint: {ex}");
+            return StatusCode(500, "Internal server error");
+        }
+        }
+
 
         // PUT method for updating an existing pinpoint
         [HttpPut("{id}")]

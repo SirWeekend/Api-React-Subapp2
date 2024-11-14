@@ -2,12 +2,14 @@ using Microsoft.EntityFrameworkCore;
 using Eksamen2024.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Eksamen2024.DAL
 {
     public class PinpointRepository : IPinpointRepository
     {
         private readonly ApplicationDbContext _db;
+        private readonly ILogger<PinpointRepository> _logger;
 
         public PinpointRepository(ApplicationDbContext db)
         {
