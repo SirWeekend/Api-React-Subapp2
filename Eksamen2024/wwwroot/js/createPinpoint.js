@@ -17,7 +17,7 @@ document.getElementById('pinpointForm').addEventListener('submit', function (eve
     };
 
     // Send the data to the API using fetch
-    fetch('/api/pinpoints', {
+    fetch('/api/pinpoint', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

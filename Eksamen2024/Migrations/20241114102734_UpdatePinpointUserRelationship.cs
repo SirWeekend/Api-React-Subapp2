@@ -5,7 +5,7 @@
 namespace Eksamen2024.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class UpdatePinpointUserRelationship : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,17 +36,17 @@ namespace Eksamen2024.Migrations
                     Longitude = table.Column<double>(type: "REAL", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UsersUserId = table.Column<int>(type: "INTEGER", nullable: true)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pinpoints", x => x.PinpointId);
                     table.ForeignKey(
-                        name: "FK_Pinpoints_Users_UsersUserId",
-                        column: x => x.UsersUserId,
+                        name: "FK_Pinpoints_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,8 +57,7 @@ namespace Eksamen2024.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Text = table.Column<string>(type: "TEXT", nullable: false),
                     PinpointId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UsersUserId = table.Column<int>(type: "INTEGER", nullable: true)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,10 +69,11 @@ namespace Eksamen2024.Migrations
                         principalColumn: "PinpointId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comments_Users_UsersUserId",
-                        column: x => x.UsersUserId,
+                        name: "FK_Comments_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -82,14 +82,14 @@ namespace Eksamen2024.Migrations
                 column: "PinpointId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_UsersUserId",
+                name: "IX_Comments_UserId",
                 table: "Comments",
-                column: "UsersUserId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pinpoints_UsersUserId",
+                name: "IX_Pinpoints_UserId",
                 table: "Pinpoints",
-                column: "UsersUserId");
+                column: "UserId");
         }
 
         /// <inheritdoc />

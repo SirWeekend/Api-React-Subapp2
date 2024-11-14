@@ -1,5 +1,5 @@
 // Initialize the map and set its view to the default location
-var map = L.map('map').setView([59.9139, 10.7522], 13); // Coordinates for Oslo
+//var map = L.map('map').setView([59.9139, 10.7522], 13); // Coordinates for Oslo
 
 
 // Add OpenStreetMap tiles to the map
@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Function to load existing points and display them on the map
 function loadPoints() {
-    fetch('/api/pinpoints')
+    fetch('/api/pinpoint')
         .then(response => response.json())
         .then(data => {
             data.forEach(point => {
@@ -59,7 +59,7 @@ map.on('click', function (e) {
         };
 
         // Send the data to the API to create a new pinpoint
-        fetch('/api/pinpoints', {
+        fetch('/api/pinpoint', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

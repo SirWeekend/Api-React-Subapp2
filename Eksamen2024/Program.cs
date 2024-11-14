@@ -1,11 +1,14 @@
 using Eksamen2024.DAL;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 // Adding the connectionstring to this file
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
