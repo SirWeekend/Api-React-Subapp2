@@ -12,7 +12,8 @@ function loadPoints() {
     fetch('/api/pinpoint')
         .then(response => response.json())
         .then(data => {
-            data.forEach(point => {
+            const points = data.$values || [];  // Use $values if it exists, otherwise an empty array
+            points.forEach(point => {
                 L.marker([point.latitude, point.longitude])
                     .addTo(map)
                     .bindPopup(`<b>${point.name}</b><br>${point.description}`)
