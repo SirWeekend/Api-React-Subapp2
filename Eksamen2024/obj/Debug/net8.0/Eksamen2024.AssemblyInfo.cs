@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Eksamen2024")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87d657d1bd8bb8ab9a816ee3aab50cff8ffb3cff")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d797509780fdae436b0bff148639b249c2a947f")]
+>>>>>>> e233fa94c30c920e9820c306e54bfe6c7ea22e28
 [assembly: System.Reflection.AssemblyProductAttribute("Eksamen2024")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Eksamen2024")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj": {}
+    "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj": {}
   },
   "projects": {
-    "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj": {
+    "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj",
+        "projectUniqueName": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
         "projectName": "Eksamen2024",
-        "projectPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/Eksamen2024.csproj",
-        "packagesPath": "/Users/jonasfjelstad/.nuget/packages/",
-        "outputPath": "/Users/jonasfjelstad/Documents/GitHub/ITPE3200-Eksamen/Eksamen2024/obj/",
+        "projectPath": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\Eksamen2024.csproj",
+        "packagesPath": "C:\\Users\\fredr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fredr\\Documents\\GitHub\\ITPE3200-Eksamen\\Eksamen2024\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jonasfjelstad/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\fredr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
