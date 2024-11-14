@@ -1,5 +1,5 @@
 // Initialize the map and set its view to the default location
-var map = L.map('map').setView([51.505, -0.09], 13); // Default coordinates
+var map = L.map('map').setView([59.9139, 10.7522], 13); // Coordinates for Oslo
 
 // Add OpenStreetMap tiles to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
