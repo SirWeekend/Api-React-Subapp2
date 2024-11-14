@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "msbuild",
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build",
+			"label": "Build: Eksamen2024.csproj",
+			"detail": "Build the Eksamen2024.csproj project using dotnet build"
+		}
+	]
+}
