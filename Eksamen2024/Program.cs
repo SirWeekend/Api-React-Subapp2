@@ -2,8 +2,21 @@ using Eksamen2024.DAL;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Legg til autentisering med cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Bruker/Login"; // Sett stien for påloggingssiden
+                    options.LogoutPath = "/Bruker/Logout"; // Sett stien for utloggingssiden
+                });
+
+// Legg til session og TempData-støtte
+builder.Services.AddSession();
+builder.Services.AddControllersWithViews().AddSessionStateTempDataProvider();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews()
@@ -17,23 +30,20 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Register PinpointRepository for Dependency Injection
 builder.Services.AddScoped<IPinpointRepository, PinpointRepository>();
 
+// Logger konfigurasjon
 var loggerConfiguration = new LoggerConfiguration()
-    .MinimumLevel.Information() 
+    .MinimumLevel.Information()
     .WriteTo.File($"Logs/app_{DateTime.Now:yyyyMMdd_HHmmss}.log");
 
 var logger = loggerConfiguration.CreateLogger();
 builder.Logging.AddSerilog(logger);
 
-
 var app = builder.Build();
-
-DBInit.Seed(app);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -42,7 +52,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseSession();          // For TempData
+app.UseAuthentication();    // For autentisering
+app.UseAuthorization();     // For autorisasjon
+
+// Seed initial database data
+DBInit.Seed(app);
 
 app.MapControllerRoute(
     name: "default",

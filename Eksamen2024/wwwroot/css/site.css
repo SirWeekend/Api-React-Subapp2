@@ -74,3 +74,33 @@ body {
 .btn-primary:hover {
   background-color: #0056b3;
 }
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-success {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-success:hover, .btn-danger:hover {
+  opacity: 0.9;
+}
