@@ -34,9 +34,25 @@
                 </li>
             </div>  
         </ul>
+               @{
+    var username = TempData["Username"] as string;
+        }
+
+            @if (!string.IsNullOrEmpty(username))
+                {
+                     <h2>Hei, @username!</h2>
+                    }
+
         
         <div id="login-link">
-            <li class="list-group-item"><a asp-controller="Bruker" asp-action="Login">Logg inn</a></li>
+            @if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("Logout", "Bruker")">Logg ut</a>
+}
+else
+{
+    <a href="@Url.Action("Login", "Bruker")">Logg inn</a>
+}
         </div>
     </div>
 
