@@ -7,22 +7,12 @@
 *.suo
 *.vs
 /node_modules
-/.pnp
-.pnp.js
 
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*/AssemblyInfo.cs
+MyMapAppDb.db-Shm
+MyMapAppDb.db-wal
+Eksamen2024.dll
+Eksamen2024.pdb
+Eksamen2024.staticwebassets.runtime.json
+staticwebassets/
+Eksamen2024/bin/Debug/net8.0/Eksamen2024.dll
