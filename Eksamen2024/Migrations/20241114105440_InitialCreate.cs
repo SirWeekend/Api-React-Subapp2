@@ -5,11 +5,26 @@
 namespace Eksamen2024.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatePinpointUserRelationship : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    AdminId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    HashedPassword = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.AdminId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -36,11 +51,17 @@ namespace Eksamen2024.Migrations
                     Longitude = table.Column<double>(type: "REAL", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AdminId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pinpoints", x => x.PinpointId);
+                    table.ForeignKey(
+                        name: "FK_Pinpoints_Admins_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admins",
+                        principalColumn: "AdminId");
                     table.ForeignKey(
                         name: "FK_Pinpoints_Users_UserId",
                         column: x => x.UserId,
@@ -57,11 +78,17 @@ namespace Eksamen2024.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Text = table.Column<string>(type: "TEXT", nullable: false),
                     PinpointId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    AdminId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comments_Admins_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admins",
+                        principalColumn: "AdminId");
                     table.ForeignKey(
                         name: "FK_Comments_Pinpoints_PinpointId",
                         column: x => x.PinpointId,
@@ -77,6 +104,11 @@ namespace Eksamen2024.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_AdminId",
+                table: "Comments",
+                column: "AdminId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_PinpointId",
                 table: "Comments",
                 column: "PinpointId");
@@ -85,6 +117,11 @@ namespace Eksamen2024.Migrations
                 name: "IX_Comments_UserId",
                 table: "Comments",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pinpoints_AdminId",
+                table: "Pinpoints",
+                column: "AdminId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pinpoints_UserId",
@@ -100,6 +137,9 @@ namespace Eksamen2024.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pinpoints");
+
+            migrationBuilder.DropTable(
+                name: "Admins");
 
             migrationBuilder.DropTable(
                 name: "Users");
