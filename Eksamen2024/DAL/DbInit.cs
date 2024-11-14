@@ -17,8 +17,8 @@ namespace Eksamen2024.DAL
             {
                 var users = new List<User>
                 {
-                    new User { Username = "Alice Hansen", Email = "alice@example.com" },
-                    new User { Username = "Bob Johansen", Email = "bob@example.com" }
+                    new User { Username = "Alice Hansen", Email = "alice@example.com", HashedPassword= "XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=" },
+                    new User { Username = "Bob Johansen", Email = "bob@example.com", HashedPassword = "morendin" }
                 };
                 context.AddRange(users);
                 context.SaveChanges();
@@ -28,8 +28,9 @@ namespace Eksamen2024.DAL
             {
                 var pinpoints = new List<Pinpoint>
                 {
-                    new Pinpoint { Name = "Central Park", Latitude = 40.785091, Longitude = -73.968285, UserId = 1 },
-                    new Pinpoint { Name = "Statue of Liberty", Latitude = 40.689247, Longitude = -74.044502, UserId = 2 }
+                    new Pinpoint { Name = "Oslo Opera House", Latitude = 59.9074, Longitude = 10.7530, UserId = 1 },
+                    new Pinpoint { Name = "Akershus Fortress", Latitude = 59.9094, Longitude = 10.7388, UserId = 2 }
+
                 };
                 context.AddRange(pinpoints);
                 context.SaveChanges();
