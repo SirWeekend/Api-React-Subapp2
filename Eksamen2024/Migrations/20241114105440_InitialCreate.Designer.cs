@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eksamen2024.Migrations
 {
-    [DbContext(typeof(ItemDbContext))]
-    [Migration("20240923113241_AddAdminToDb")]
-    partial class AddAdminToDb
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20241114105440_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,16 +66,13 @@ namespace Eksamen2024.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UsersUserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("CommentId");
 
                     b.HasIndex("AdminId");
 
                     b.HasIndex("PinpointId");
 
-                    b.HasIndex("UsersUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -108,19 +105,16 @@ namespace Eksamen2024.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UsersUserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("PinpointId");
 
                     b.HasIndex("AdminId");
 
-                    b.HasIndex("UsersUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pinpoints");
                 });
 
-            modelBuilder.Entity("Eksamen2024.Models.Users", b =>
+            modelBuilder.Entity("Eksamen2024.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -155,13 +149,15 @@ namespace Eksamen2024.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Eksamen2024.Models.Users", "Users")
+                    b.HasOne("Eksamen2024.Models.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UsersUserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Pinpoint");
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Eksamen2024.Models.Pinpoint", b =>
@@ -170,11 +166,13 @@ namespace Eksamen2024.Migrations
                         .WithMany("Pinpoint")
                         .HasForeignKey("AdminId");
 
-                    b.HasOne("Eksamen2024.Models.Users", "Users")
+                    b.HasOne("Eksamen2024.Models.User", "User")
                         .WithMany("Pinpoint")
-                        .HasForeignKey("UsersUserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Eksamen2024.Models.Admin", b =>
@@ -189,7 +187,7 @@ namespace Eksamen2024.Migrations
                     b.Navigation("Comments");
                 });
 
-            modelBuilder.Entity("Eksamen2024.Models.Users", b =>
+            modelBuilder.Entity("Eksamen2024.Models.User", b =>
                 {
                     b.Navigation("Comments");
 

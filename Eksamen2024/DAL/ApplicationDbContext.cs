@@ -13,7 +13,7 @@ namespace Eksamen2024.DAL
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Pinpoint> Pinpoints { get; set; }
-        
+        public DbSet<Admin> Admins { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
