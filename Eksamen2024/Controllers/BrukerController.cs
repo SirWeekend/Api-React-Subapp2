@@ -67,6 +67,16 @@ public class BrukerController : Controller
         return View();
     }
 
+     public IActionResult Lagret()
+    {
+        return View();
+    }
+
+     public IActionResult Admin()
+    {
+        return View();
+    }
+
     [HttpPost]
     public IActionResult Registrer(string username, string email, string password)
     {
