@@ -5,7 +5,7 @@
 namespace Eksamen2024.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class MakeUserIdNullableInPinpoint : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,7 +51,7 @@ namespace Eksamen2024.Migrations
                     Longitude = table.Column<double>(type: "REAL", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: true),
                     AdminId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -66,8 +66,7 @@ namespace Eksamen2024.Migrations
                         name: "FK_Pinpoints_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateTable(

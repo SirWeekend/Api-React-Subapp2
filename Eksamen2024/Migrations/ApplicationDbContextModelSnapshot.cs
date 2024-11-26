@@ -99,7 +99,7 @@ namespace Eksamen2024.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("PinpointId");
@@ -165,9 +165,7 @@ namespace Eksamen2024.Migrations
 
                     b.HasOne("Eksamen2024.Models.User", "User")
                         .WithMany("Pinpoint")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

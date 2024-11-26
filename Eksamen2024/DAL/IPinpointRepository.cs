@@ -9,7 +9,7 @@ namespace Eksamen2024.DAL
     {
         Task<IEnumerable<Pinpoint>> GetAll();
         Task<Pinpoint?> GetPinpointById(int id);
-        Task Create(Pinpoint pinpoint);
+        Task Create(Pinpoint pinpoint, int userId);
         Task Update(Pinpoint pinpoint);
         Task<bool> Delete(int id);
     }

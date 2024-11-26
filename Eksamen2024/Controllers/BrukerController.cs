@@ -18,12 +18,6 @@ public class BrukerController : Controller
         _dbContext = dbContext;
     }
 
-    [HttpGet]
-    public IActionResult Login()
-    {
-        return View();
-    }
-
     [HttpPost]
     public IActionResult Login(string username, string password)
     {
@@ -46,18 +40,20 @@ public class BrukerController : Controller
 
             var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()), // Add UserId
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email)
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
+            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).Wait();
 
-            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            // Lagre brukernavn i TempData for personlig hilsen
+            TempData["Username"] = user.Username;
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home"); // Omdiriger til hjemmesiden etter innlogging
         }
-
         return View();
     }
 
@@ -65,6 +61,21 @@ public class BrukerController : Controller
     public IActionResult Registrer()
     {
         return View();
+    }
+
+    public IActionResult Lagret()
+    {
+        return View();
+    }
+
+    public IActionResult Admin()
+    {
+        return View();
+    }
+
+    public IActionResult Login()
+    {
+        return View();   
     }
 
     [HttpPost]

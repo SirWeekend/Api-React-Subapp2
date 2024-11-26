@@ -28,8 +28,22 @@ namespace Eksamen2024.DAL
             {
                 var pinpoints = new List<Pinpoint>
                 {
-                    new Pinpoint { Name = "Oslo Opera House", Latitude = 59.9074, Longitude = 10.7530, UserId = 1 },
-                    new Pinpoint { Name = "Akershus Fortress", Latitude = 59.9094, Longitude = 10.7388, UserId = 2 }
+                    new Pinpoint 
+                    { 
+                    Name = "Oslo Opera House", 
+                    Latitude = 59.9074,
+                    Longitude = 10.7530,
+                    UserId = 1,
+                    Description = "The biggest opera house in Norway. It is the home of many cultural events." 
+                    },
+                    new Pinpoint 
+                    { 
+                    Name = "Akershus Fortress",
+                    Latitude = 59.9094, 
+                    Longitude = 10.7388, 
+                    UserId = 2, 
+                    Description = "The biggest opera house in Norway. It is the home of many cultural events.",
+                    }
 
                 };
                 context.AddRange(pinpoints);
@@ -46,6 +60,7 @@ namespace Eksamen2024.DAL
                 context.AddRange(comments);
                 context.SaveChanges();
             }
+            
 
             // You can add more seeding logic here for additional entities like Pinpoints, etc.
         }

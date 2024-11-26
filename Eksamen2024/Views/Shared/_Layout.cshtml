@@ -23,16 +23,36 @@
             </div>
             <div id= lagret-ikon>
                 <i class="fas fa-bookmark"></i>     
-                <li class="list-group-item"><a href="#">Lagret</a></li>
+                <li class="list-group-item">
+                <a asp-controller="Bruker" asp-action="Lagret">Lagret</a>
+                </li>
             </div>     
             <div id= admin-ikon>
                 <i class= "fas fa-cog"></i>
-                <li class= "list-group-item"><a href="#">Admin</a></li>
+                <li class= "list-group-item">
+                <a asp-controller="Bruker" asp-action="Admin">Admin</a>
+                </li>
             </div>  
         </ul>
+               @{
+    var username = TempData["Username"] as string;
+        }
+
+            @if (!string.IsNullOrEmpty(username))
+                {
+                     <h2>Hei, @username!</h2>
+                    }
+
         
         <div id="login-link">
-            <li class="list-group-item"><a asp-controller="Bruker" asp-action="Login">Logg inn</a></li>
+            @if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("Logout", "Bruker")">Logg ut</a>
+}
+else
+{
+    <a href="@Url.Action("Login", "Bruker")">Logg inn</a>
+}
         </div>
     </div>
 

@@ -5,9 +5,9 @@ namespace Eksamen2024.DAL;
 
 public class AdminRepository : IAdminRepository
 {
-    private readonly ItemDbContext _db;
+    private readonly ApplicationDbContext _db;
 
-    public AdminRepository(ItemDbContext db)
+    public AdminRepository(ApplicationDbContext db)
     {
         _db = db;
     }

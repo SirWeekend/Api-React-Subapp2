@@ -18,7 +18,7 @@ namespace Eksamen2024.Models
         public string? ImageUrl { get; set; }
 
         // Foreign key to the user for the pinpoint
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         // Can be null if there are no users
         public  virtual User? User { get; set; }
 

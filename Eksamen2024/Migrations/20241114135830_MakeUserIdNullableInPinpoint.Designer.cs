@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eksamen2024.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241114105440_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241114135830_MakeUserIdNullableInPinpoint")]
+    partial class MakeUserIdNullableInPinpoint
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,7 +102,7 @@ namespace Eksamen2024.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("PinpointId");
@@ -168,9 +168,7 @@ namespace Eksamen2024.Migrations
 
                     b.HasOne("Eksamen2024.Models.User", "User")
                         .WithMany("Pinpoint")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
