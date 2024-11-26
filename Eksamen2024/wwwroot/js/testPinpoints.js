@@ -12,16 +12,25 @@ function loadPoints() {
     fetch('/api/pinpoint')
         .then(response => response.json())
         .then(data => {
-            const points = data.$values || [];  // Use $values if it exists, otherwise an empty array
+            const points = data.$values || []; // Use $values if it's there
             points.forEach(point => {
+                // Construct the popup content dynamically with new attributes
+                const popupContent = `
+                    <b>${point.name}</b><br>
+                    <p>${point.description || 'No description available.'}</p>
+                    ${point.imageUrl ? `<img src="${point.imageUrl}" alt="${point.name}" style="width:100px;height:auto;">` : ''}
+                    <p><i>Username: ${point.username || 'Anonymous'}</i></p>
+                `;
+                
                 L.marker([point.latitude, point.longitude])
                     .addTo(map)
-                    .bindPopup(`<b>${point.name}</b><br>${point.description}`)
+                    .bindPopup(popupContent)
                     .openPopup();
             });
         })
         .catch(error => console.error('Error loading points:', error));
 }
+
 
 // Call the function to load points when the map is ready
 loadPoints();
@@ -36,28 +45,35 @@ map.on('click', function (e) {
         .setLatLng(e.latlng)
         .setContent(`
             <form id="popupForm">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                <label for="description">Description:</label><br>
-                <textarea id="description" name="description" required></textarea><br>
-                <button type="submit">Create Pinpoint</button>
-            </form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" required></textarea><br>
+            <button type="submit">Create Pinpoint</button>
+        </form>
         `)
         .openOn(map);
 
     // Handle form submission within the popup
     document.getElementById('popupForm').addEventListener('submit', function (event) {
         event.preventDefault();
+        console.log("Create Pinpoint button clicked"); // Debugging
 
         const name = document.getElementById('name').value;
-        const description = document.getElementById('description').value;
+        const description = document.getElementById('description').value || null;
+        //const imageUrl = document.getElementById('imageUrl').value || null; //Can be null
+        //const userId = document.getElementById('userId').value || null; //Can be null
 
         const pinpoint = {
             name: name,
             description: description,
             latitude: lat,
-            longitude: lng
+            longitude: lng,
+            //imageUrl: imageUrl,
+            //userId: userId
         };
+
+        console.log("Payload to be sent:", pinpoint); // Log for debugging
 
         // Send the data to the API to create a new pinpoint
         fetch('/api/pinpoint', {
@@ -66,6 +82,7 @@ map.on('click', function (e) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(pinpoint)
+            //credentials: "include", // Include cookies in the request
         })
         .then(response => {
             if (response.ok) {
@@ -83,5 +100,6 @@ map.on('click', function (e) {
         });
     });
 });
+    
 
 

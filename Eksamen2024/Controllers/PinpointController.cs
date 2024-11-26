@@ -34,7 +34,19 @@ namespace Eksamen2024.Controllers
             {
                 // Fetch pinpoints from the repository
                 var pinpoints = await _pinpointRepository.GetAll();
-                return Ok(pinpoints);
+                
+                var pinpointObjectAll = pinpoints.Select(pinpoint => new
+                {
+                pinpoint.PinpointId,
+                pinpoint.Name,
+                pinpoint.Description,
+                pinpoint.Latitude,
+                pinpoint.Longitude,
+                pinpoint.ImageUrl,
+                Username = pinpoint.User?.Username ?? "Anonymous"
+                });
+                return Ok(pinpointObjectAll);
+
             }
             catch (Exception ex)
             {
@@ -56,8 +68,19 @@ namespace Eksamen2024.Controllers
                 {
                     return NotFound();
                 }
+                //Creating a response object
+                var pinpointObject = new
+                {
+                    pinpoint.PinpointId,
+                    pinpoint.Name,
+                    pinpoint.ImageUrl,
+                    pinpoint.Description,
+                    pinpoint.Latitude,
+                    pinpoint.Longitude,
+                    Username = pinpoint.User?.Username ?? "Anonymous" // Using anonymous as default if its no user to handle null values
+                };
 
-                return Ok(pinpoint);
+                return Ok(pinpointObject);
             }
             catch (Exception ex)
             {
@@ -68,7 +91,7 @@ namespace Eksamen2024.Controllers
 
         // POST method for creating a new pinpoint
        [HttpPost]
-       [AllowAnonymous]
+       [Authorize]
         public async Task<IActionResult> CreatePinpoint([FromBody] Pinpoint pinpoint)
         {
         if (!ModelState.IsValid)
@@ -78,7 +101,27 @@ namespace Eksamen2024.Controllers
 
         try
         {
-            await _pinpointRepository.Create(pinpoint);
+            
+            // Log claims debugging
+            _logger.LogInformation("User Claims:");
+            foreach (var claim in User.Claims)
+            {
+            _logger.LogInformation("Claim Type: {Type}, Claim Value: {Value}", claim.Type, claim.Value);
+             }
+
+            // Retrieve the logged-in user's ID from claims
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdClaim))
+            {
+            _logger.LogError("User is not authenticated or NameIdentifier claim is missing.");
+            return Unauthorized("User is not authenticated.");
+            }
+
+            var userId = int.Parse(userIdClaim);
+
+            // Set the UserId on the Pinpoint
+            pinpoint.UserId = userId;
+            await _pinpointRepository.Create(pinpoint, userId);
             return CreatedAtAction(nameof(GetPinpoint), new { id = pinpoint.PinpointId }, pinpoint);
         }
         catch (Exception ex)
@@ -88,7 +131,7 @@ namespace Eksamen2024.Controllers
         }
         }
 
-
+        
         // PUT method for updating an existing pinpoint
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePinpoint(int id, [FromBody] Pinpoint pinpoint)
