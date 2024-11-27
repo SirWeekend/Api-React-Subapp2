@@ -101,6 +101,9 @@ public class BrukerController : Controller
             _dbContext.Users.Add(newUser);
             _dbContext.SaveChanges();
 
+             // Legg til registrert melding
+            TempData["BrukerRegMelding"] = "Du er nå registrert!";
+
             return RedirectToAction("Login", "Bruker");
         }
 
