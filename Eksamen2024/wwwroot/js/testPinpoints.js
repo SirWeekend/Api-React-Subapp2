@@ -156,16 +156,12 @@ function submitComment(pinpointId) {
         return;
     }
 
-    const payload = {
-        commentText
-    };
-
     fetch(`/api/pinpoint/${pinpointId}/comments`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: commentText }), // Wrap the comment text in an object
+        body: JSON.stringify(commentText), // Send raw string instead of object
     })
         .then(response => {
             if (response.ok) {
@@ -182,6 +178,7 @@ function submitComment(pinpointId) {
             alert("Failed to add comment.");
         });
 }
+
 
 function toggleComments(pinpointId) {
     const commentsContainer = document.getElementById(`comments-container-${pinpointId}`);
