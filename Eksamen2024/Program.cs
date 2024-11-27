@@ -18,6 +18,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews().AddSessionStateTempDataProvider();
 
+// Legg til CORS-støtte
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
@@ -38,9 +49,6 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
-
-
-
 // Logger konfigurasjon
 var loggerConfiguration = new LoggerConfiguration()
     .MinimumLevel.Information()
@@ -58,6 +66,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Bruk CORS-politikken
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
