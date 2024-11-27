@@ -30,6 +30,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Register PinpointRepository for Dependency Injection
 builder.Services.AddScoped<IPinpointRepository, PinpointRepository>();
 
+// Legger til Swagger og XML-kommentarer for bedre dokumentasjon av API-et
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    var xmlFilename = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
+
+
+
+
 // Logger konfigurasjon
 var loggerConfiguration = new LoggerConfiguration()
     .MinimumLevel.Information()
@@ -41,11 +52,12 @@ builder.Logging.AddSerilog(logger);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
