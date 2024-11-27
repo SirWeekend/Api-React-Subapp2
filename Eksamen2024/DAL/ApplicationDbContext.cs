@@ -28,10 +28,18 @@ namespace Eksamen2024.DAL
                 .HasOne(p => p.User)
                 .WithMany(u => u.Pinpoint)
                 .HasForeignKey(p => p.UserId);
+            
             modelBuilder.Entity<Comment>()
-                .HasOne(c => c.User)
-                .WithMany(u => u.Comments)
-                .HasForeignKey(c => c.UserId);
+            .HasOne(c => c.User)
+            .WithMany(u => u.Comments)
+            .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.SetNull); // Allow deleting a user while retaining comments
+
+            modelBuilder.Entity<Comment>()
+            .HasOne(c => c.Pinpoint)
+            .WithMany(p => p.Comments)
+            .HasForeignKey(c => c.PinpointId)
+            .OnDelete(DeleteBehavior.Cascade); // Delete comments if a Pinpoint is deleted
         }
     }
 }

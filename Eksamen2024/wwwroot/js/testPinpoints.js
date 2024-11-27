@@ -20,6 +20,12 @@ function loadPoints() {
                     <p>${point.description || 'No description available.'}</p>
                     ${point.imageUrl ? `<img src="${point.imageUrl}" alt="${point.name}" style="width:100px;height:auto;">` : ''}
                     <p><i>Username: ${point.username || 'Anonymous'}</i></p>
+                    <button onclick="toggleComments(${point.pinpointId})">View Comments</button>
+                    <div id="comments-container-${point.pinpointId}" style="display: none; margin-top: 10px;">
+                        <div id="comments-${point.pinpointId}">Loading comments...</div>
+                        <textarea id="comment-input-${point.pinpointId}" placeholder="Write your comment here..."></textarea><br>
+                        <button onclick="submitComment(${point.pinpointId})">Post Comment</button>
+                    </div>
                 `;
                 
                 L.marker([point.latitude, point.longitude])
@@ -100,6 +106,106 @@ map.on('click', function (e) {
         });
     });
 });
+
+function loadComments(pinpointId) {
+    fetch(`/api/pinpoint/${pinpointId}/comments`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Failed to fetch comments: ${response.statusText}`);
+                throw new Error(`API returned status ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(comments => {
+            // Normalize response if it has $values
+            const normalizedComments = comments.$values || comments;
+
+            if (!Array.isArray(normalizedComments)) {
+                console.error("Invalid API response:", comments);
+                throw new Error("API response is not an array");
+            }
+
+            const commentsDiv = document.getElementById(`comments-${pinpointId}`);
+            commentsDiv.innerHTML = ''; // Clear existing comments
+
+            if (normalizedComments.length === 0) {
+                commentsDiv.textContent = 'No comments yet.';
+            } else {
+                normalizedComments.forEach(comment => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.textContent = `${comment.username}: ${comment.text}`;
+                    commentsDiv.appendChild(commentDiv);
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error loading comments:", error);
+            const commentsDiv = document.getElementById(`comments-${pinpointId}`);
+            commentsDiv.textContent = 'Failed to load comments.';
+        });
+}
+
+    
+
+// Function to submit a new comment
+function submitComment(pinpointId) {
+    const commentText = document.getElementById(`comment-input-${pinpointId}`).value;
+
+    if (!commentText.trim()) {
+        alert("Comment cannot be empty.");
+        return;
+    }
+
+    const payload = {
+        commentText
+    };
+
+    fetch(`/api/pinpoint/${pinpointId}/comments`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: commentText }), // Wrap the comment text in an object
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("Comment added successfully!");
+                loadComments(pinpointId); // Reload comments after posting
+            } else {
+                return response.text().then(text => {
+                    throw new Error(text);
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error submitting comment:", error);
+            alert("Failed to add comment.");
+        });
+}
+
+function toggleComments(pinpointId) {
+    const commentsContainer = document.getElementById(`comments-container-${pinpointId}`);
+
+    // Toggle visibility
+    if (commentsContainer.style.display === "none") {
+        commentsContainer.style.display = "block";
+        loadComments(pinpointId); // Load comments when expanding the section
+    } else {
+        commentsContainer.style.display = "none";
+    }
+}
+
+
+window.toggleComments = toggleComments;
+console.log("toggleComments assigned to window");
+window.submitComment = submitComment;
+console.log("submitComment assigned to window");
+window.loadComments = loadComments;
+console.log("loadComments assigned to window");
+
+
+
+
     
 
 

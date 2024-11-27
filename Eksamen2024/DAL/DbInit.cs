@@ -30,6 +30,7 @@ namespace Eksamen2024.DAL
                 {
                     new Pinpoint 
                     { 
+                    PinpointId = 2, 
                     Name = "Oslo Opera House", 
                     Latitude = 59.9074,
                     Longitude = 10.7530,
@@ -38,6 +39,7 @@ namespace Eksamen2024.DAL
                     },
                     new Pinpoint 
                     { 
+                    PinpointId = 1,    
                     Name = "Akershus Fortress",
                     Latitude = 59.9094, 
                     Longitude = 10.7388, 
@@ -54,8 +56,8 @@ namespace Eksamen2024.DAL
             {
                 var comments = new List<Comment>
                 {
-                    new Comment { Text = "This is a great place!", UserId = 1, PinpointId = 1 },
-                    new Comment { Text = "Had a wonderful time!", UserId = 2, PinpointId = 2 }
+                    new Comment { CommentId = 1, Text = "This is a great place!", UserId = 1, PinpointId = 1 },
+                    new Comment { CommentId = 2, Text = "Had a wonderful time!", UserId = 2, PinpointId = 2 }
                 };
                 context.AddRange(comments);
                 context.SaveChanges();
