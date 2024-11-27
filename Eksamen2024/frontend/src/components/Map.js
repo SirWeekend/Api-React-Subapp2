@@ -1,24 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const Map = ({ pinpoints }) => {
+  const mapRef = useRef(null);
+
   useEffect(() => {
-    const map = L.map('map').setView([59.91, 10.75], 13); // Oslo som standardvisning
+    if (!mapRef.current) {
+      // Initialiser kartet bare én gang
+      mapRef.current = L.map('map').setView([59.91, 10.75], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(map);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+      }).addTo(mapRef.current);
+    }
 
-    // Legg til markører basert på `pinpoints`
-    pinpoints.forEach((pinpoint) => {
-      L.marker([pinpoint.latitude, pinpoint.longitude])
-        .addTo(map)
-        .bindPopup(`<b>${pinpoint.name}</b><br>${pinpoint.description}`);
+    // Fjern tidligere markører
+    mapRef.current.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        mapRef.current.removeLayer(layer);
+      }
     });
 
-    // Rydd opp kartet når komponenten fjernes
-    return () => map.remove();
+    // Legg til nye markører
+    pinpoints.forEach((pinpoint) => {
+      if (pinpoint.latitude && pinpoint.longitude) {
+        L.marker([pinpoint.latitude, pinpoint.longitude])
+          .addTo(mapRef.current)
+          .bindPopup(`<b>${pinpoint.name}</b><br>${pinpoint.description}`);
+      }
+    });
   }, [pinpoints]);
 
   return <div id="map" style={{ height: '500px', width: '100%' }}></div>;

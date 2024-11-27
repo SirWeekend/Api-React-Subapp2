@@ -6,10 +6,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Eksamen2024.Models;
 using Eksamen2024.Helpers;
 using Eksamen2024.DAL;
-using System.Reflection.Metadata.Ecma335;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Eksamen2024.DTOs;
 
-public class BrukerController : Controller
+[ApiController]
+[Route("api/[controller]")]
+public class BrukerController : ControllerBase
 {
     private readonly ApplicationDbContext _dbContext;
 
@@ -18,101 +19,76 @@ public class BrukerController : Controller
         _dbContext = dbContext;
     }
 
-    [HttpPost]
-    public IActionResult Login(string username, string password)
+    /// <summary>
+    /// Login bruker
+    /// </summary>
+    [HttpPost("Login")]
+    public IActionResult Login([FromBody] LoginRequest request)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            var user = _dbContext.Users.SingleOrDefault(u => u.Username == username);
-
-            if (user == null)
-            {
-                ModelState.AddModelError("", "Invalid login attempt.");
-                return View();
-            }
-
-            var isPasswordValid = PasswordHelper.VerifyPassword(password, user.HashedPassword);
-            if (!isPasswordValid)
-            {
-                ModelState.AddModelError("", "Invalid login attempt.");
-                return View();
-            }
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()), // Add UserId
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email)
-            };
-
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
-            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).Wait();
-
-            // Lagre brukernavn i TempData for personlig hilsen
-            TempData["Username"] = user.Username;
-
-            return RedirectToAction("Index", "Home"); // Omdiriger til hjemmesiden etter innlogging
-        }
-        return View();
-    }
-
-    [HttpGet]
-    public IActionResult Registrer()
-    {
-        return View();
-    }
-
-    public IActionResult Lagret()
-    {
-        return View();
-    }
-
-    public IActionResult Admin()
-    {
-        return View();
-    }
-
-    public IActionResult Login()
-    {
-        return View();   
-    }
-
-    [HttpPost]
-    public IActionResult Registrer(string username, string email, string password)
-    {
-        if(ModelState.IsValid)
-        {
-            var existingUser = _dbContext.Users.SingleOrDefault(u => u.Username == username);
-            if(existingUser != null)
-            {
-                ModelState.AddModelError("", "Username already exists.");
-                return View();
-            }
-
-            var hashedPassword = PasswordHelper.HashPassword(password);
-            var newUser = new User
-            {
-                Username = username,
-                Email = email,
-                HashedPassword = hashedPassword
-            };
-
-            _dbContext.Users.Add(newUser);
-            _dbContext.SaveChanges();
-
-             // Legg til registrert melding
-            TempData["BrukerRegMelding"] = "Du er nå registrert!";
-
-            return RedirectToAction("Login", "Bruker");
+            return BadRequest("Invalid data provided.");
         }
 
-        return View();
+        var user = _dbContext.Users.SingleOrDefault(u => u.Username == request.Username);
+
+        if (user == null || !PasswordHelper.VerifyPassword(request.Password, user.HashedPassword))
+        {
+            return Unauthorized("Invalid username or password.");
+        }
+
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Email, user.Email)
+        };
+
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var principal = new ClaimsPrincipal(identity);
+        HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).Wait();
+
+        return Ok(new { Username = user.Username });
     }
 
+    /// <summary>
+    /// Registrer ny bruker
+    /// </summary>
+    [HttpPost("Registrer")]
+    public IActionResult Registrer([FromBody] RegisterRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest("Invalid data provided.");
+        }
+
+        var existingUser = _dbContext.Users.SingleOrDefault(u => u.Username == request.Username);
+        if (existingUser != null)
+        {
+            return Conflict("Username already exists.");
+        }
+
+        var hashedPassword = PasswordHelper.HashPassword(request.Password);
+        var newUser = new User
+        {
+            Username = request.Username,
+            Email = request.Email,
+            HashedPassword = hashedPassword
+        };
+
+        _dbContext.Users.Add(newUser);
+        _dbContext.SaveChanges();
+
+        return Ok("User registered successfully.");
+    }
+
+    /// <summary>
+    /// Logout bruker
+    /// </summary>
+    [HttpPost("Logout")]
     public IActionResult Logout()
     {
         HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Login", "Bruker");
+        return Ok("User logged out successfully.");
     }
 }

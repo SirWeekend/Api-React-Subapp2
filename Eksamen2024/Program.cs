@@ -16,7 +16,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 // Legg til session og TempData-støtte
 builder.Services.AddSession();
-builder.Services.AddControllersWithViews().AddSessionStateTempDataProvider();
+builder.Services.AddControllersWithViews()
+    .AddSessionStateTempDataProvider()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); // JSON-serialisering
 
 // Legg til CORS-støtte
 builder.Services.AddCors(options =>
@@ -29,16 +32,11 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add services to the container.
-builder.Services.AddControllersWithViews()
-    .AddJsonOptions(options =>
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
-
-// Adding the connectionstring to this file
+// Adding the connection string to this file
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register PinpointRepository for Dependency Injection
+// Register repositories for Dependency Injection
 builder.Services.AddScoped<IPinpointRepository, PinpointRepository>();
 
 // Legger til Swagger og XML-kommentarer for bedre dokumentasjon av API-et
@@ -81,8 +79,12 @@ app.UseAuthorization();     // For autorisasjon
 // Seed initial database data
 DBInit.Seed(app);
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers(); // Legg til mapping for API-kontrollere
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();

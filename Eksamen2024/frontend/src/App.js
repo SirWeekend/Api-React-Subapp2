@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PinpointList from './components/PinpointList';
 import PinpointForm from './components/PinpointForm';
-import Map from './components/Map'; // Legg til Map-komponenten
+import Map from './components/Map'; // Kart-komponenten
 import Login from './components/Login'; // Login-komponenten
 import Register from './components/Register'; // Register-komponenten
 import { logoutUser } from './apiService'; // Funksjon for å logge ut
@@ -21,11 +21,12 @@ function App() {
   const loadPinpoints = async () => {
     try {
       const data = await fetchPinpoints();
+      console.log('Fetched pinpoints:', data); // Debug: Sjekk data i konsollen
       setPinpoints(data); // Oppdater state
     } catch (error) {
       console.error('Error fetching pinpoints:', error);
     }
-  };
+  };  
 
   // Opprette en ny pinpoint (POST)
   const handleCreate = async (newPinpoint) => {
