@@ -1,62 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import PinpointList from './components/PinpointList';
+import PinpointForm from './components/PinpointForm';
+import Map from './components/Map'; // Legg til Map-komponenten
+import Login from './components/Login'; // Login-komponenten
+import Register from './components/Register'; // Register-komponenten
+import { logoutUser } from './apiService'; // Funksjon for å logge ut
+import {
+  fetchPinpoints,
+  createPinpoint as apiCreatePinpoint,
+  updatePinpoint as apiUpdatePinpoint,
+  deletePinpoint as apiDeletePinpoint,
+} from './apiService';
 
 function App() {
   const [pinpoints, setPinpoints] = useState([]); // Lagrer data fra API
-  const [newPinpoint, setNewPinpoint] = useState({ name: '', description: '' }); // For POST
-  const [updatedPinpoint, setUpdatedPinpoint] = useState({ id: null, name: '', description: '' }); // For PUT
-
-  const apiBaseUrl = 'http://localhost:5091/api/pinpoint';
+  const [selectedPinpoint, setSelectedPinpoint] = useState(null); // For oppdatering (PUT)
+  const [user, setUser] = useState(null); // Lagrer innlogget bruker
 
   // Hente data fra backend (GET)
-  const fetchPinpoints = async () => {
+  const loadPinpoints = async () => {
     try {
-      const response = await axios.get(apiBaseUrl);
-      const data = response.data?.$values || [];
-      setPinpoints(data); // Oppdater state med data
+      const data = await fetchPinpoints();
+      setPinpoints(data); // Oppdater state
     } catch (error) {
       console.error('Error fetching pinpoints:', error);
     }
   };
 
   // Opprette en ny pinpoint (POST)
-  const createPinpoint = async () => {
+  const handleCreate = async (newPinpoint) => {
     try {
-      console.log('Creating new pinpoint:', newPinpoint);
-      const response = await axios.post(apiBaseUrl, newPinpoint);
-      console.log('Response from POST:', response.data);
-      setPinpoints([...pinpoints, response.data]); // Legg til ny pinpoint i state
-      setNewPinpoint({ name: '', description: '' }); // Tøm skjema
+      const createdPinpoint = await apiCreatePinpoint(newPinpoint);
+      setPinpoints([...pinpoints, createdPinpoint]); // Oppdater state med ny pinpoint
     } catch (error) {
-      console.error('Error creating pinpoint:', error.response ? error.response.data : error.message);
+      console.error('Error creating pinpoint:', error);
     }
   };
-  
 
-  // Oppdatere en pinpoint (PUT)
-  const updatePinpoint = async () => {
+  // Oppdatere en eksisterende pinpoint (PUT)
+  const handleUpdate = async (updatedPinpoint) => {
     try {
       const { id, name, description } = updatedPinpoint;
-      console.log('Updating pinpoint:', { id, name, description });
-      const response = await axios.put(`${apiBaseUrl}/${id}`, { name, description });
-      console.log('Response from PUT:', response.data);
+      await apiUpdatePinpoint(id, { name, description });
       setPinpoints(
         pinpoints.map((pinpoint) =>
           pinpoint.pinpointId === id ? { ...pinpoint, name, description } : pinpoint
         )
       );
-      setUpdatedPinpoint({ id: null, name: '', description: '' }); // Nullstill skjema
+      setSelectedPinpoint(null); // Nullstill valgt pinpoint
     } catch (error) {
-      console.error('Error updating pinpoint:', error.response ? error.response.data : error.message);
+      console.error('Error updating pinpoint:', error);
     }
   };
-  
 
   // Slette en pinpoint (DELETE)
-  const deletePinpoint = async (id) => {
+  const handleDelete = async (id) => {
     try {
-      await axios.delete(`${apiBaseUrl}/${id}`);
-      setPinpoints(pinpoints.filter((pinpoint) => pinpoint.pinpointId !== id)); // Fjern fra state
+      await apiDeletePinpoint(id);
+      setPinpoints(pinpoints.filter((pinpoint) => pinpoint.pinpointId !== id)); // Fjern pinpoint fra state
     } catch (error) {
       console.error('Error deleting pinpoint:', error);
     }
@@ -64,68 +65,42 @@ function App() {
 
   // Hente data ved lasting av siden
   useEffect(() => {
-    fetchPinpoints();
-  }, []);
+    if (user) {
+      loadPinpoints();
+    }
+  }, [user]);
+
+  // Logge ut brukeren
+  const handleLogout = async () => {
+    await logoutUser();
+    setUser(null); // Nullstill brukerstatus
+  };
 
   return (
     <div>
-      <h1>Pinpoints</h1>
-      <ul>
-        {pinpoints.map((pinpoint) => (
-          <li key={pinpoint.pinpointId}>
-            <strong>{pinpoint.name}</strong>: {pinpoint.description}
-            <button onClick={() => deletePinpoint(pinpoint.pinpointId)}>Delete</button>
-            <button
-              onClick={() =>
-                setUpdatedPinpoint({
-                  id: pinpoint.pinpointId,
-                  name: pinpoint.name,
-                  description: pinpoint.description,
-                })
-              }
-            >
-              Edit
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <h2>Create New Pinpoint</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={newPinpoint.name}
-        onChange={(e) => setNewPinpoint({ ...newPinpoint, name: e.target.value })}
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={newPinpoint.description}
-        onChange={(e) => setNewPinpoint({ ...newPinpoint, description: e.target.value })}
-      />
-      <button onClick={createPinpoint}>Create</button>
-
-      {updatedPinpoint.id && (
-        <div>
-          <h2>Edit Pinpoint</h2>
-          <input
-            type="text"
-            placeholder="Name"
-            value={updatedPinpoint.name}
-            onChange={(e) =>
-              setUpdatedPinpoint({ ...updatedPinpoint, name: e.target.value })
-            }
+      <h1>Pinpoints App</h1>
+      {!user ? (
+        <>
+          <Login setUser={setUser} /> {/* Login-komponenten */}
+          <Register /> {/* Register-komponenten */}
+        </>
+      ) : (
+        <>
+          <p>Welcome, {user.username}!</p>
+          <button onClick={handleLogout}>Logout</button>
+          <Map pinpoints={pinpoints} /> {/* Kartkomponenten */}
+          <PinpointList
+            pinpoints={pinpoints}
+            onDelete={handleDelete}
+            onEdit={setSelectedPinpoint} // Setter valgt pinpoint for redigering
           />
-          <input
-            type="text"
-            placeholder="Description"
-            value={updatedPinpoint.description}
-            onChange={(e) =>
-              setUpdatedPinpoint({ ...updatedPinpoint, description: e.target.value })
-            }
+          <PinpointForm
+            onCreate={handleCreate}
+            onUpdate={handleUpdate}
+            selectedPinpoint={selectedPinpoint}
+            clearSelectedPinpoint={() => setSelectedPinpoint(null)}
           />
-          <button onClick={updatePinpoint}>Update</button>
-        </div>
+        </>
       )}
     </div>
   );
