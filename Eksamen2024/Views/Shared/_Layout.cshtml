@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Eksamen2024</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Eksamen2024.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    
+  <div class="container-fluid">
+    <!-- Sidebar -->
+    <div class="col-md-3" id="sidebar">
+        <ul class="list-group">
+            <div id= meny-ikon>
+                <li class="list-group-item">
+                    <i class="fas fa-home"></i>
+                    <a asp-controller="Home" asp-action="Index">Hjem</a>
+                    </li>
+            </div>
+            <div id= lagret-ikon>
+                <i class="fas fa-bookmark"></i>     
+                <li class="list-group-item">
+                <a asp-controller="Bruker" asp-action="Lagret">Lagret</a>
+                </li>
+            </div>     
+            <div id= admin-ikon>
+                <i class= "fas fa-cog"></i>
+                <li class= "list-group-item">
+                <a asp-controller="Bruker" asp-action="Admin">Admin</a>
+                </li>
+            </div>  
+        </ul>
+               @{
+    var username = TempData["Username"] as string;
+        }
+
+            @if (!string.IsNullOrEmpty(username))
+                {
+                     <h2>Hei, @username!</h2>
+                    }
+
+        
+        <div id="login-link">
+            @if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("Logout", "Bruker")">Logg ut</a>
+}
+else
+{
+    <a href="@Url.Action("Login", "Bruker")">Logg inn</a>
+}
+        </div>
+    </div>
+
+    <!-- Main Content (Kartet) -->
+    <div class="col-md-9" id="main-content">
+        <div id="map"> @RenderBody()</div> <!-- Kartet må være her -->
+    </div>
+    <!--<script src="~/js/testPinpoints.js"></script> -->
+</div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
