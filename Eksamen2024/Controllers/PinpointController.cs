@@ -23,10 +23,11 @@ namespace Eksamen2024.Controllers
         private readonly ApplicationDbContext _dbContext; // Added ApplicationDbContext field
 
         // Constructor for dependency injection
-        public PinpointController(IPinpointRepository pinpointRepository, ILogger<PinpointController> logger)
+        public PinpointController(IPinpointRepository pinpointRepository, ILogger<PinpointController> logger, ApplicationDbContext dbContext)
         {
             _pinpointRepository = pinpointRepository;
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         // GET method for returning pinpoints asynchronously
@@ -189,28 +190,42 @@ namespace Eksamen2024.Controllers
         }
 
         [HttpGet("{pinpointId}/comments")]
-        public async Task<IActionResult> GetComments(int pinpointId)
-        {
-            try
-            {
-                var comments = await _dbContext.Comments
-                    .Where(c => c.PinpointId == pinpointId)
-                    .Select(c => new
-                    {
-                        c.CommentId,
-                        c.Text,
-                        Username = c.User?.Username ??  "Anonymous"// Join User to get the username
-                    })
-                    .ToListAsync();
+public async Task<IActionResult> GetComments(int pinpointId)
+{
+    try
+    {
+        _logger.LogInformation($"Fetching comments for PinpointId: {pinpointId}");
 
-                return Ok(comments);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Error fetching comments for PinpointId {pinpointId}: {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+        // Fetch comments for the given pinpoint
+        var comments = await _dbContext.Comments
+            .Where(c => c.PinpointId == pinpointId)
+            .Include(c => c.User)
+            .ToListAsync();
+
+        if (comments == null || !comments.Any())
+        {
+            _logger.LogWarning($"No comments found for PinpointId: {pinpointId}");
+            return Ok(new List<object>());
         }
+
+        // Transform comments into the desired format
+        var result = comments.Select(comment => new
+        {
+            comment.CommentId,
+            comment.Text,
+            Username = comment.User?.Username ?? "Anonymous"
+        }).ToList();
+
+        return Ok(result); // Explicitly return a plain array
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError($"Error fetching comments for PinpointId {pinpointId}: {ex.Message}");
+        return StatusCode(500, new { error = "Internal server error", details = ex.Message });
+    }
+}
+
+
 
 
         
@@ -261,5 +276,6 @@ namespace Eksamen2024.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
     }
 }

@@ -107,30 +107,44 @@ map.on('click', function (e) {
     });
 });
 
-    // Function to load comments for a specific pinpoint
-    function loadComments(pinpointId) {
-        fetch(`/api/pinpoint/${pinpointId}/comments`)
-            .then(response => response.json())
-            .then(comments => {
-                const commentsDiv = document.getElementById(`comments-${pinpointId}`);
-                commentsDiv.innerHTML = ''; // Clear existing comments
-    
-                if (comments.length === 0) {
-                    commentsDiv.textContent = 'No comments yet.';
-                } else {
-                    comments.forEach(comment => {
-                        const commentDiv = document.createElement('div');
-                        commentDiv.textContent = `${comment.username || 'Anonymous'}: ${comment.text}`;
-                        commentsDiv.appendChild(commentDiv);
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error loading comments:', error);
-                const commentsDiv = document.getElementById(`comments-${pinpointId}`);
-                commentsDiv.textContent = 'Failed to load comments.';
-            });
-    }
+function loadComments(pinpointId) {
+    fetch(`/api/pinpoint/${pinpointId}/comments`)
+        .then(response => {
+            if (!response.ok) {
+                console.error(`Failed to fetch comments: ${response.statusText}`);
+                throw new Error(`API returned status ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(comments => {
+            // Normalize response if it has $values
+            const normalizedComments = comments.$values || comments;
+
+            if (!Array.isArray(normalizedComments)) {
+                console.error("Invalid API response:", comments);
+                throw new Error("API response is not an array");
+            }
+
+            const commentsDiv = document.getElementById(`comments-${pinpointId}`);
+            commentsDiv.innerHTML = ''; // Clear existing comments
+
+            if (normalizedComments.length === 0) {
+                commentsDiv.textContent = 'No comments yet.';
+            } else {
+                normalizedComments.forEach(comment => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.textContent = `${comment.username}: ${comment.text}`;
+                    commentsDiv.appendChild(commentDiv);
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error loading comments:", error);
+            const commentsDiv = document.getElementById(`comments-${pinpointId}`);
+            commentsDiv.textContent = 'Failed to load comments.';
+        });
+}
+
     
 
 // Function to submit a new comment
