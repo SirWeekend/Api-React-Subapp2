@@ -231,9 +231,10 @@ public async Task<IActionResult> GetComments(int pinpointId)
         
         // PUT method for updating an existing pinpoint
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePinpoint(int id, [FromBody] Pinpoint pinpoint)
+        [Authorize]
+        public async Task<IActionResult> UpdatePinpoint(int id, [FromBody] Pinpoint updatedPinpoint)
         {
-            if (id != pinpoint.PinpointId)
+            if (id != updatedPinpoint.PinpointId)
             {
                 return BadRequest("ID mismatch");
             }
@@ -245,7 +246,34 @@ public async Task<IActionResult> GetComments(int pinpointId)
 
             try
             {
-                await _pinpointRepository.Update(pinpoint);
+                var existingPinpoint = await _pinpointRepository.GetPinpointById(id);
+                if (existingPinpoint == null)
+                {
+                    return NotFound("Pinpoint not found.");
+                }
+
+                 // Get the logged-in user's ID
+                var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userIdClaim))
+                {
+                    _logger.LogError("User is not authenticated or NameIdentifier claim is missing.");
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var loggedInUserId = int.Parse(userIdClaim);
+
+                // Check if the logged-in user is the owner of the pinpoint
+                if (existingPinpoint.UserId != loggedInUserId)
+                {
+                    return Forbid("You are not authorized to update this pinpoint.");
+                }
+
+                // Update properties
+                existingPinpoint.Name = updatedPinpoint.Name;
+                existingPinpoint.Description = updatedPinpoint.Description;
+                existingPinpoint.ImageUrl = updatedPinpoint.ImageUrl;
+
+                await _pinpointRepository.Update(existingPinpoint);
                 return NoContent();
             }
             catch (Exception ex)
@@ -255,25 +283,50 @@ public async Task<IActionResult> GetComments(int pinpointId)
             }
         }
 
+
         // DELETE method for deleting a pinpoint
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeletePinpoint(int id)
         {
-            try
-            {
-                var success = await _pinpointRepository.Delete(id);
+    try
+    {
+        // Fetch the pinpoint from the database
+        var pinpoint = await _pinpointRepository.GetPinpointById(id);
+        if (pinpoint == null)
+        {
+            return NotFound("Pinpoint not found.");
+        }
 
-                if (!success)
-                {
-                    return NotFound();
-                }
+        // Get the logged-in user's ID
+        var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userIdClaim))
+        {
+            _logger.LogError("User is not authenticated or NameIdentifier claim is missing.");
+            return Unauthorized("User is not authenticated.");
+        }
 
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Error deleting pinpoint: {ex}");
-                return StatusCode(500, "Internal server error");
+        var loggedInUserId = int.Parse(userIdClaim);
+
+        // Check if the logged-in user is the owner of the pinpoint
+        if (pinpoint.UserId != loggedInUserId)
+        {
+            return Forbid("You are not authorized to delete this pinpoint.");
+        }
+
+        // Perform the deletion
+        var success = await _pinpointRepository.Delete(id);
+        if (!success)
+        {
+            return StatusCode(500, "Failed to delete pinpoint.");
+        }
+
+        return NoContent();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error deleting pinpoint: {ex}");
+            return StatusCode(500, "Internal server error");
             }
         }
 

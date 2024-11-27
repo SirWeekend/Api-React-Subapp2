@@ -7,8 +7,18 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+//const markerMap = new Map();
+
 // Function to load existing points and display them on the map
 function loadPoints() {
+
+     // Clear existing markers
+     map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+        }
+    });
+
     fetch('/api/pinpoint')
         .then(response => response.json())
         .then(data => {
@@ -20,6 +30,8 @@ function loadPoints() {
                     <p>${point.description || 'No description available.'}</p>
                     ${point.imageUrl ? `<img src="${point.imageUrl}" alt="${point.name}" style="width:100px;height:auto;">` : ''}
                     <p><i>Username: ${point.username || 'Anonymous'}</i></p>
+                    <button onclick="editPinpoint(${point.pinpointId})">Edit Pinpoint</button>
+                     <button onclick="deletePinpoint(${point.pinpointId})" style="color: red;">Delete Pinpoint</button>
                     <button onclick="toggleComments(${point.pinpointId})">View Comments</button>
                     <div id="comments-container-${point.pinpointId}" style="display: none; margin-top: 10px;">
                         <div id="comments-${point.pinpointId}">Loading comments...</div>
@@ -31,7 +43,9 @@ function loadPoints() {
                 L.marker([point.latitude, point.longitude])
                     .addTo(map)
                     .bindPopup(popupContent)
-                    .openPopup();
+                    //.openPopup();
+                    // Store the marker with the pinpoint ID
+                    //markerMap.set(point.pinpointId, marker);
             });
         })
         .catch(error => console.error('Error loading points:', error));
@@ -191,14 +205,85 @@ function toggleComments(pinpointId) {
         commentsContainer.style.display = "none";
     }
 }
-
-
 window.toggleComments = toggleComments;
 console.log("toggleComments assigned to window");
 window.submitComment = submitComment;
 console.log("submitComment assigned to window");
 window.loadComments = loadComments;
 console.log("loadComments assigned to window");
+
+function editPinpoint(pinpointId) {
+    const newName = prompt("Enter new name for the pinpoint:");
+    const newDescription = prompt("Enter new description for the pinpoint:");
+
+    if (!newName || !newDescription) {
+        alert("Name and description cannot be empty!");
+        return;
+    }
+
+    const updatedPinpoint = {
+        pinpointId, // Make sure the ID matches
+        name: newName,
+        description: newDescription,
+        // Optional: Add other properties if you allow editing them
+    };
+
+    fetch(`/api/pinpoint/${pinpointId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedPinpoint),
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("Pinpoint updated successfully!");
+                loadPoints(); // Reload points to reflect changes
+            } else {
+                return response.text().then(text => {
+                    throw new Error(text);
+                });
+            }
+        })
+        .catch(error => {
+            console.error("Error updating pinpoint:", error);
+            alert("Failed to update pinpoint.");
+        });
+}
+
+function deletePinpoint(pinpointId) {
+    if (!confirm("Are you sure you want to delete this pinpoint?")) {
+        return;
+    }
+
+    fetch(`/api/pinpoint/${pinpointId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then(response => {
+            if (response.status === 403) {
+                alert("You are not authorized to delete this pinpoint.");
+                return;
+            }
+            if (!response.ok) {
+                throw new Error(`API returned status ${response.status}`);
+            }
+
+            alert("Pinpoint deleted successfully!");
+
+            // Reload all points on the map
+            loadPoints();
+        })
+        .catch(error => {
+            console.error("Error deleting pinpoint:", error);
+            alert("Failed to delete pinpoint.");
+        });
+}
+
+
+
 
 
 
