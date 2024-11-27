@@ -6,6 +6,8 @@ using Eksamen2024.Models;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+
 
 
 
@@ -18,6 +20,7 @@ namespace Eksamen2024.Controllers
         // Dependency injection of the repository
         private readonly IPinpointRepository _pinpointRepository;
         private readonly ILogger<PinpointController> _logger;
+        private readonly ApplicationDbContext _dbContext; // Added ApplicationDbContext field
 
         // Constructor for dependency injection
         public PinpointController(IPinpointRepository pinpointRepository, ILogger<PinpointController> logger)
@@ -130,6 +133,85 @@ namespace Eksamen2024.Controllers
             return StatusCode(500, "Internal server error");
         }
         }
+
+        // Method for adding comments to a pinpoint
+        [HttpPost("{pinpointId}/comments")]
+        [Authorize]
+        public async Task<IActionResult> AddComment(int pinpointId, [FromBody] string commentText)
+        {
+            if (string.IsNullOrWhiteSpace(commentText))
+            {
+                return BadRequest("Comment text cannot be empty.");
+            }
+
+            try
+            {
+                // Get the logged-in user's ID from claims
+                var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userIdClaim))
+                {
+                    _logger.LogError("User is not authenticated or NameIdentifier claim is missing.");
+                    return Unauthorized("User is not authenticated.");
+                }
+
+                var userId = int.Parse(userIdClaim);
+
+                // Verify that the pinpoint exists
+                var pinpoint = await _pinpointRepository.GetPinpointById(pinpointId);
+                if (pinpoint == null)
+                {
+                    return NotFound("Pinpoint not found.");
+                }
+
+                // Create the comment
+                var comment = new Comment
+                {
+                    Text = commentText,
+                    PinpointId = pinpointId,
+                    UserId = userId
+                };
+
+                _dbContext.Comments.Add(comment);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    comment.CommentId,
+                    comment.Text,
+                    Username = pinpoint.User?.Username ?? "Anonymous"
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error adding comment: {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("{pinpointId}/comments")]
+        public async Task<IActionResult> GetComments(int pinpointId)
+        {
+            try
+            {
+                var comments = await _dbContext.Comments
+                    .Where(c => c.PinpointId == pinpointId)
+                    .Select(c => new
+                    {
+                        c.CommentId,
+                        c.Text,
+                        Username = c.User?.Username ??  "Anonymous"// Join User to get the username
+                    })
+                    .ToListAsync();
+
+                return Ok(comments);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error fetching comments for PinpointId {pinpointId}: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
 
         
         // PUT method for updating an existing pinpoint
