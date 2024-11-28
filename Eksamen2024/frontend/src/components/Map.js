@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { createPinpoint } from '../apiService'; // Importer API-kallet for å opprette pinpoint
+import { createPinpoint } from '../apiService';
 
 const Map = ({ pinpoints, onPinpointAdded }) => {
   const mapRef = useRef(null);
@@ -15,11 +15,11 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
         attribution: '&copy; OpenStreetMap contributors',
       }).addTo(mapRef.current);
 
-      // Event listener for å legge til pinpoint ved klikk på kartet
+      // Legg til event listener for å legge til et pinpoint ved klikk
       mapRef.current.on('click', async (e) => {
         const { lat, lng } = e.latlng;
 
-        // Åpne popup-skjema ved klikk
+        // Åpne popup-skjema på kartet
         const popup = L.popup()
           .setLatLng(e.latlng)
           .setContent(`
@@ -46,10 +46,12 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
 
           try {
             const createdPinpoint = await createPinpoint(newPinpoint);
-            onPinpointAdded(createdPinpoint); // Oppdater state i App.js
+            onPinpointAdded(createdPinpoint);
+
+            // Lukk popup etter opprettelse
             mapRef.current.closePopup();
 
-            // Legg til markør for det nye pinpointet
+            // Legg til markør på kartet
             L.marker([createdPinpoint.latitude, createdPinpoint.longitude])
               .addTo(mapRef.current)
               .bindPopup(`<b>${createdPinpoint.name}</b><br>${createdPinpoint.description}`);
@@ -61,14 +63,13 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
       });
     }
 
-    // Fjern tidligere markører
+    // Fjern tidligere markører og legg til nye
     mapRef.current.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         mapRef.current.removeLayer(layer);
       }
     });
 
-    // Legg til eksisterende pinpoints
     pinpoints.forEach((pinpoint) => {
       if (pinpoint.latitude && pinpoint.longitude) {
         L.marker([pinpoint.latitude, pinpoint.longitude])

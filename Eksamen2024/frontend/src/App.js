@@ -62,6 +62,11 @@ function App() {
     }
   };
 
+  const handlePinpointAdded = (newPinpoint) => {
+    console.log('Pinpoint added from map:', newPinpoint); // Logging for kart-oppretting
+    setPinpoints((prevPinpoints) => [...prevPinpoints, newPinpoint]);
+  };
+
   useEffect(() => {
     if (user) {
       console.log('User logged in:', user); // Logging for innlogging
@@ -87,7 +92,7 @@ function App() {
         <>
           <p>Welcome, {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
-          <Map pinpoints={pinpoints} />
+          <Map pinpoints={pinpoints} onPinpointAdded={handlePinpointAdded} />
           <PinpointList
             pinpoints={pinpoints}
             onDelete={handleDelete}
