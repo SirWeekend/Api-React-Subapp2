@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { createPinpoint } from '../apiService'; // Importer API-kallet for å opprette pinpoint
 
-const Map = ({ pinpoints }) => {
+const Map = ({ pinpoints, onPinpointAdded }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -13,6 +14,51 @@ const Map = ({ pinpoints }) => {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
       }).addTo(mapRef.current);
+
+      // Event listener for å legge til pinpoint ved klikk på kartet
+      mapRef.current.on('click', async (e) => {
+        const { lat, lng } = e.latlng;
+
+        // Åpne popup-skjema ved klikk
+        const popup = L.popup()
+          .setLatLng(e.latlng)
+          .setContent(`
+            <div>
+              <label for="name">Name:</label><br>
+              <input type="text" id="name" placeholder="Enter name" /><br>
+              <label for="description">Description:</label><br>
+              <textarea id="description" placeholder="Enter description"></textarea><br>
+              <button id="createPinpoint">Create Pinpoint</button>
+            </div>
+          `)
+          .openOn(mapRef.current);
+
+        document.getElementById('createPinpoint').addEventListener('click', async () => {
+          const name = document.getElementById('name').value;
+          const description = document.getElementById('description').value;
+
+          if (!name || !description) {
+            alert('Name and description are required!');
+            return;
+          }
+
+          const newPinpoint = { name, description, latitude: lat, longitude: lng };
+
+          try {
+            const createdPinpoint = await createPinpoint(newPinpoint);
+            onPinpointAdded(createdPinpoint); // Oppdater state i App.js
+            mapRef.current.closePopup();
+
+            // Legg til markør for det nye pinpointet
+            L.marker([createdPinpoint.latitude, createdPinpoint.longitude])
+              .addTo(mapRef.current)
+              .bindPopup(`<b>${createdPinpoint.name}</b><br>${createdPinpoint.description}`);
+          } catch (error) {
+            console.error('Error creating pinpoint:', error);
+            alert('Failed to create pinpoint.');
+          }
+        });
+      });
     }
 
     // Fjern tidligere markører
@@ -22,7 +68,7 @@ const Map = ({ pinpoints }) => {
       }
     });
 
-    // Legg til nye markører
+    // Legg til eksisterende pinpoints
     pinpoints.forEach((pinpoint) => {
       if (pinpoint.latitude && pinpoint.longitude) {
         L.marker([pinpoint.latitude, pinpoint.longitude])
@@ -30,7 +76,7 @@ const Map = ({ pinpoints }) => {
           .bindPopup(`<b>${pinpoint.name}</b><br>${pinpoint.description}`);
       }
     });
-  }, [pinpoints]);
+  }, [pinpoints, onPinpointAdded]);
 
   return <div id="map" style={{ height: '500px', width: '100%' }}></div>;
 };

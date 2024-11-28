@@ -8,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Legg til autentisering med cookies
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/Bruker/Login"; // Sett stien for påloggingssiden
-                    options.LogoutPath = "/Bruker/Logout"; // Sett stien for utloggingssiden
-                });
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Bruker/Login"; // Sett stien for påloggingssiden
+        options.LogoutPath = "/Bruker/Logout"; // Sett stien for utloggingssiden
+    });
 
 // Legg til session og TempData-støtte
 builder.Services.AddSession();
@@ -24,19 +24,20 @@ builder.Services.AddControllersWithViews()
 // Legg til CORS-støtte
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("http://localhost:3000") // Tillat frontend-URL
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials(); // Tillat cookies/autentisering
     });
 });
 
-// Adding the connection string to this file
+// Legger til databaseforbindelse
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register repositories for Dependency Injection
+// Registrer repositorier for Dependency Injection
 builder.Services.AddScoped<IPinpointRepository, PinpointRepository>();
 
 // Legger til Swagger og XML-kommentarer for bedre dokumentasjon av API-et
@@ -57,16 +58,14 @@ builder.Logging.AddSerilog(logger);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Konfigurer pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Bruk CORS-politikken
-app.UseCors("AllowAllOrigins");
-
+app.UseCors("AllowFrontend"); // Aktiverer CORS-policyen
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -79,12 +78,9 @@ app.UseAuthorization();     // For autorisasjon
 // Seed initial database data
 DBInit.Seed(app);
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers(); // Legg til mapping for API-kontrollere
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});
+app.MapControllers(); // Map API-kontrollere
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
