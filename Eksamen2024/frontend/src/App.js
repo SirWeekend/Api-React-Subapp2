@@ -36,9 +36,9 @@ function App() {
 
   const handleUpdate = async (updatedPinpoint) => {
     try {
+      console.log('Sending data to update pinpoint:', updatedPinpoint);
       await updatePinpoint(updatedPinpoint.pinpointId, updatedPinpoint);
-      console.log('Pinpoint updated:', updatedPinpoint);
-
+      console.log('Pinpoint updated successfully:', updatedPinpoint);
       setPinpoints((prev) =>
         prev.map((p) =>
           p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p
@@ -46,9 +46,10 @@ function App() {
       );
       setSelectedPinpoint(null);
     } catch (error) {
-      console.error('Error updating pinpoint:', error);
+      console.error('Error updating pinpoint:', error.response?.data || error.message);
     }
   };
+  
 
   const handleDelete = async (id) => {
     try {

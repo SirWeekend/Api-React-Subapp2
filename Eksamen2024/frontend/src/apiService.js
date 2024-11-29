@@ -65,7 +65,7 @@ export const createPinpoint = async (pinpoint) => {
 // Oppdater eksisterende pinpoint
 export const updatePinpoint = async (id, pinpoint) => {
   try {
-    console.log('Updating pinpoint with ID:', id);
+    console.log('Updating pinpoint with data:', pinpoint);
     const response = await axiosInstance.put(`/pinpoint/${id}`, pinpoint);
     console.log('Pinpoint updated successfully:', response.data);
     return response.data;
@@ -74,6 +74,7 @@ export const updatePinpoint = async (id, pinpoint) => {
     throw error;
   }
 };
+
 
 // Slett pinpoint
 export const deletePinpoint = async (id) => {

@@ -83,10 +83,39 @@ namespace Eksamen2024.DAL
 
         public async Task Update(Pinpoint pinpoint)
         {
-            _db.Pinpoints.Update(pinpoint);
-            await _db.SaveChangesAsync();
-            _logger.LogInformation($"Pinpoint updated: {pinpoint.PinpointId}");
+            try
+            {
+                _logger.LogInformation($"Updating pinpoint in database: ID={pinpoint.PinpointId}, Name={pinpoint.Name}");
+                
+                // Forsikre oss om at pinpoint er "tracked" av EF
+                var existingEntity = await _db.Pinpoints.FirstOrDefaultAsync(p => p.PinpointId == pinpoint.PinpointId);
+                if (existingEntity == null)
+                {
+                    _logger.LogError($"Pinpoint with ID {pinpoint.PinpointId} not found in database.");
+                    throw new KeyNotFoundException($"Pinpoint with ID {pinpoint.PinpointId} does not exist.");
+                }
+
+                existingEntity.Name = pinpoint.Name;
+                existingEntity.Description = pinpoint.Description;
+                existingEntity.Latitude = pinpoint.Latitude;
+                existingEntity.Longitude = pinpoint.Longitude;
+
+                _db.Pinpoints.Update(existingEntity); // Oppdaterer objektet
+                await _db.SaveChangesAsync();
+                _logger.LogInformation("Pinpoint updated successfully in database.");
+            }
+            catch (DbUpdateException dbEx)
+            {
+                _logger.LogError($"Database update exception: {dbEx.InnerException?.Message ?? dbEx.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Unexpected error during update: {ex.Message}");
+                throw;
+            }
         }
+
 
         public async Task<bool> Delete(int id)
         {

@@ -22,18 +22,27 @@ const PinpointForm = ({ onCreate, onUpdate, selectedPinpoint, clearSelectedPinpo
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const pinpointData = { name, description, latitude, longitude };
-
+  
+    const pinpointData = {
+      pinpointId: selectedPinpoint ? selectedPinpoint.pinpointId : undefined,
+      name: name.trim(),
+      description: description.trim(),
+      latitude: parseFloat(latitude), // Konverter til tall
+      longitude: parseFloat(longitude), // Konverter til tall
+    };
+  
+    console.log('Submitting pinpoint data:', pinpointData);
+  
     if (selectedPinpoint) {
-      pinpointData.pinpointId = selectedPinpoint.pinpointId;
       await onUpdate(pinpointData);
     } else {
       await onCreate(pinpointData);
     }
-
+  
     clearSelectedPinpoint();
   };
+  
+  
 
   return (
     <div>

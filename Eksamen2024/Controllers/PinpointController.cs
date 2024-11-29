@@ -82,33 +82,47 @@ namespace Eksamen2024.Controllers
         [Authorize]
         public async Task<IActionResult> UpdatePinpoint(int id, [FromBody] Pinpoint updatedPinpoint)
         {
+            _logger.LogInformation($"PUT request to update pinpoint with ID: {id}");
+
+            // Log hele objektet som mottas
+            _logger.LogInformation($"Received data: {System.Text.Json.JsonSerializer.Serialize(updatedPinpoint)}");
+
             if (id != updatedPinpoint.PinpointId)
             {
+                _logger.LogWarning($"Mismatched ID: URL ID {id} does not match body ID {updatedPinpoint.PinpointId}");
                 return BadRequest(new { Message = "Mismatched ID." });
             }
 
             try
             {
                 var existingPinpoint = await _pinpointRepository.GetPinpointById(id);
+
                 if (existingPinpoint == null)
                 {
+                    _logger.LogWarning($"Pinpoint with ID {id} not found.");
                     return NotFound(new { Message = "Pinpoint not found." });
                 }
+
+                // Log eksisterende pinpoint fra databasen
+                _logger.LogInformation($"Existing pinpoint before update: {System.Text.Json.JsonSerializer.Serialize(existingPinpoint)}");
 
                 existingPinpoint.Name = updatedPinpoint.Name;
                 existingPinpoint.Description = updatedPinpoint.Description;
                 existingPinpoint.Latitude = updatedPinpoint.Latitude;
                 existingPinpoint.Longitude = updatedPinpoint.Longitude;
 
+                _logger.LogInformation($"Updating pinpoint in repository...");
                 await _pinpointRepository.Update(existingPinpoint);
-                return NoContent();
+                _logger.LogInformation($"Pinpoint updated successfully.");
+                return Ok(existingPinpoint); // Return updated pinpoint for confirmation
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error updating pinpoint: {ex.Message}");
+                _logger.LogError($"Exception while updating pinpoint with ID {id}: {ex.Message}");
                 return StatusCode(500, "An error occurred while updating the pinpoint.");
             }
         }
+
 
         [HttpDelete("{id}")]
         [Authorize]
