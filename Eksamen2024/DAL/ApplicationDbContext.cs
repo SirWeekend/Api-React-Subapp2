@@ -3,7 +3,6 @@ using Eksamen2024.Models;
 
 namespace Eksamen2024.DAL
 {
-
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -14,7 +13,7 @@ namespace Eksamen2024.DAL
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Pinpoint> Pinpoints { get; set; }
         public DbSet<Admin> Admins { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
@@ -22,24 +21,11 @@ namespace Eksamen2024.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<Pinpoint>()
                 .HasOne(p => p.User)
                 .WithMany(u => u.Pinpoint)
-                .HasForeignKey(p => p.UserId);
-            
-            modelBuilder.Entity<Comment>()
-            .HasOne(c => c.User)
-            .WithMany(u => u.Comments)
-            .HasForeignKey(c => c.UserId)
-            .OnDelete(DeleteBehavior.SetNull); // Allow deleting a user while retaining comments
-
-            modelBuilder.Entity<Comment>()
-            .HasOne(c => c.Pinpoint)
-            .WithMany(p => p.Comments)
-            .HasForeignKey(c => c.PinpointId)
-            .OnDelete(DeleteBehavior.Cascade); // Delete comments if a Pinpoint is deleted
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

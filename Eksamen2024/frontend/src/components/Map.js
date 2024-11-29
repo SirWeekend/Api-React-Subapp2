@@ -3,36 +3,37 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { createPinpoint } from '../apiService';
 
-const Map = ({ pinpoints, onPinpointAdded }) => {
+const Map = ({ pinpoints = [], onPinpointAdded }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
     if (!mapRef.current) {
-      // Initialiser kartet bare én gang
+      // Initialiser kartet
       mapRef.current = L.map('map').setView([59.91, 10.75], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
       }).addTo(mapRef.current);
 
-      // Event listener for å legge til pinpoint ved klikk
+      // Håndter klikk på kartet for å opprette nye pinpoints
       mapRef.current.on('click', async (e) => {
         const { lat, lng } = e.latlng;
+        const popupContent = `
+          <div>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" placeholder="Enter name" /><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" placeholder="Enter description"></textarea><br>
+            <button id="createPinpoint">Create Pinpoint</button>
+          </div>
+        `;
 
-        // Popup-skjema
         const popup = L.popup()
           .setLatLng(e.latlng)
-          .setContent(`
-            <div>
-              <label for="name">Name:</label><br>
-              <input type="text" id="name" placeholder="Enter name" /><br>
-              <label for="description">Description:</label><br>
-              <textarea id="description" placeholder="Enter description"></textarea><br>
-              <button id="createPinpoint">Create Pinpoint</button>
-            </div>
-          `)
+          .setContent(popupContent)
           .openOn(mapRef.current);
 
+        // Legg til eventlistener for å opprette nytt pinpoint
         document.getElementById('createPinpoint').addEventListener('click', async () => {
           const name = document.getElementById('name').value;
           const description = document.getElementById('description').value;
@@ -46,10 +47,10 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
 
           try {
             const createdPinpoint = await createPinpoint(newPinpoint);
-            onPinpointAdded(createdPinpoint); // Oppdater state i App.js
+            onPinpointAdded(createdPinpoint);
             mapRef.current.closePopup();
 
-            // Legg til markør for det nye pinpointet
+            // Legg til markør på kartet for det nye pinpointet
             L.marker([createdPinpoint.latitude, createdPinpoint.longitude])
               .addTo(mapRef.current)
               .bindPopup(`<b>${createdPinpoint.name}</b><br>${createdPinpoint.description}`);
@@ -61,22 +62,21 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
       });
     }
 
-    // Fjern gamle markører
-    mapRef.current.eachLayer((layer) => {
-      if (layer instanceof L.Marker) {
-        mapRef.current.removeLayer(layer);
-      }
-    });
+    // Oppdater eksisterende pinpoints på kartet
+    console.log('Updating map with pinpoints:', pinpoints);
 
-    // Legg til eksisterende pinpoints
     pinpoints.forEach((pinpoint) => {
-      if (pinpoint.latitude && pinpoint.longitude) {
-        L.marker([pinpoint.latitude, pinpoint.longitude])
-          .addTo(mapRef.current)
-          .bindPopup(`<b>${pinpoint.name}</b><br>${pinpoint.description}`);
+      if (!pinpoint || !pinpoint.latitude || !pinpoint.longitude) {
+        console.warn(`Skipping invalid pinpoint on map: ${JSON.stringify(pinpoint)}`);
+        return; // Hopp over ugyldige pinpoints
       }
+
+      console.log(`Adding pinpoint to map: ID=${pinpoint.pinpointId}, Name=${pinpoint.name}`);
+      L.marker([pinpoint.latitude, pinpoint.longitude])
+        .addTo(mapRef.current)
+        .bindPopup(`<b>${pinpoint.name}</b><br>${pinpoint.description}`);
     });
-  }, [pinpoints, onPinpointAdded]);
+  }, [pinpoints]);
 
   return <div id="map" style={{ height: '500px', width: '100%' }}></div>;
 };

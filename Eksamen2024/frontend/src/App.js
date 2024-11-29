@@ -13,36 +13,36 @@ import {
 } from './apiService';
 
 function App() {
-  const [pinpoints, setPinpoints] = useState([]);
-  const [selectedPinpoint, setSelectedPinpoint] = useState(null);
-  const [user, setUser] = useState(null);
+  const [pinpoints, setPinpoints] = useState([]); // State for pinpoints
+  const [selectedPinpoint, setSelectedPinpoint] = useState(null); // State for valgt pinpoint
+  const [user, setUser] = useState(null); // State for brukerinformasjon
 
   const loadPinpoints = async () => {
     try {
       const data = await fetchPinpoints();
-      console.log('Fetched pinpoints:', data);
+      console.log('Pinpoints fetched from backend:', data);
+  
+      // Sjekk dataene før de settes i state
       setPinpoints(data);
     } catch (error) {
       console.error('Error fetching pinpoints:', error);
     }
   };
+  
 
-  const handlePinpointAdded = async (newPinpoint) => {
-    try {
-      const createdPinpoint = await createPinpoint(newPinpoint);
-      console.log('Pinpoint added from map:', createdPinpoint);
-      setPinpoints((prevPinpoints) => [...prevPinpoints, createdPinpoint]);
-    } catch (error) {
-      console.error('Error adding pinpoint:', error);
-    }
+  const handlePinpointAdded = (newPinpoint) => {
+    setPinpoints((prevPinpoints) => [...prevPinpoints, newPinpoint]);
   };
 
   const handleUpdate = async (updatedPinpoint) => {
     try {
       await updatePinpoint(updatedPinpoint.pinpointId, updatedPinpoint);
       console.log('Pinpoint updated:', updatedPinpoint);
+
       setPinpoints((prev) =>
-        prev.map((p) => (p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p))
+        prev.map((p) =>
+          p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p
+        )
       );
       setSelectedPinpoint(null);
     } catch (error) {
@@ -54,7 +54,10 @@ function App() {
     try {
       await deletePinpoint(id);
       console.log('Pinpoint deleted with ID:', id);
-      setPinpoints((prevPinpoints) => prevPinpoints.filter((p) => p.pinpointId !== id));
+
+      setPinpoints((prevPinpoints) =>
+        prevPinpoints.filter((p) => p.pinpointId !== id)
+      );
     } catch (error) {
       console.error('Error deleting pinpoint:', error);
     }
@@ -63,7 +66,7 @@ function App() {
   useEffect(() => {
     if (user) {
       console.log('User logged in:', user);
-      loadPinpoints();
+      loadPinpoints(); // Last pinpoints når brukeren logger inn
     }
   }, [user]);
 
@@ -71,7 +74,7 @@ function App() {
     try {
       await logoutUser();
       console.log('User logged out');
-      setUser(null);
+      setUser(null); // Nullstill brukerdata
     } catch (error) {
       console.error('Error during logout:', error);
     }
@@ -89,7 +92,10 @@ function App() {
         <>
           <p>Welcome, {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
-          <Map pinpoints={pinpoints} onPinpointAdded={handlePinpointAdded} />
+          <Map
+            pinpoints={pinpoints}
+            onPinpointAdded={handlePinpointAdded}
+          />
           <PinpointList
             pinpoints={pinpoints}
             onDelete={handleDelete}

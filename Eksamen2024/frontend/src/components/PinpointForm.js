@@ -1,64 +1,77 @@
 import React, { useState, useEffect } from 'react';
 
 const PinpointForm = ({ onCreate, onUpdate, selectedPinpoint, clearSelectedPinpoint }) => {
-  const [pinpoint, setPinpoint] = useState({
-    name: '',
-    description: '',
-    latitude: '',
-    longitude: '',
-  });
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
 
   useEffect(() => {
     if (selectedPinpoint) {
-      setPinpoint(selectedPinpoint);
+      setName(selectedPinpoint.name || '');
+      setDescription(selectedPinpoint.description || '');
+      setLatitude(selectedPinpoint.latitude || '');
+      setLongitude(selectedPinpoint.longitude || '');
     } else {
-      setPinpoint({ name: '', description: '', latitude: '', longitude: '' });
+      setName('');
+      setDescription('');
+      setLatitude('');
+      setLongitude('');
     }
   }, [selectedPinpoint]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (pinpoint.pinpointId) {
-      onUpdate(pinpoint);
+
+    const pinpointData = { name, description, latitude, longitude };
+
+    if (selectedPinpoint) {
+      pinpointData.pinpointId = selectedPinpoint.pinpointId;
+      await onUpdate(pinpointData);
     } else {
-      onCreate(pinpoint);
+      await onCreate(pinpointData);
     }
+
+    clearSelectedPinpoint();
   };
 
   return (
     <div>
-      <h2>{pinpoint.pinpointId ? 'Edit Pinpoint' : 'Create New Pinpoint'}</h2>
+      <h2>{selectedPinpoint ? 'Edit Pinpoint' : 'Create New Pinpoint'}</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Name"
-          value={pinpoint.name || ''}
-          onChange={(e) => setPinpoint({ ...pinpoint, name: e.target.value })}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
         />
-        <input
-          type="text"
+        <textarea
           placeholder="Description"
-          value={pinpoint.description || ''}
-          onChange={(e) => setPinpoint({ ...pinpoint, description: e.target.value })}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
-        />
+        ></textarea>
         <input
           type="number"
           placeholder="Latitude"
-          value={pinpoint.latitude || ''}
-          onChange={(e) => setPinpoint({ ...pinpoint, latitude: parseFloat(e.target.value) })}
+          value={latitude}
+          onChange={(e) => setLatitude(e.target.value)}
           required
         />
         <input
           type="number"
           placeholder="Longitude"
-          value={pinpoint.longitude || ''}
-          onChange={(e) => setPinpoint({ ...pinpoint, longitude: parseFloat(e.target.value) })}
+          value={longitude}
+          onChange={(e) => setLongitude(e.target.value)}
           required
         />
-        <button type="submit">{pinpoint.pinpointId ? 'Update' : 'Create'}</button>
-        {pinpoint.pinpointId && <button onClick={clearSelectedPinpoint}>Cancel</button>}
+        <button type="submit">{selectedPinpoint ? 'Update' : 'Create'}</button>
+        {selectedPinpoint && (
+          <button type="button" onClick={clearSelectedPinpoint}>
+            Cancel
+          </button>
+        )}
       </form>
     </div>
   );

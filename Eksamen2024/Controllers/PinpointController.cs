@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Eksamen2024.DAL;
 using Eksamen2024.Models;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace Eksamen2024.Controllers
 {
@@ -28,7 +28,13 @@ namespace Eksamen2024.Controllers
             try
             {
                 var pinpoints = await _pinpointRepository.GetAll();
-                _logger.LogInformation("Pinpoints successfully fetched.");
+                if (pinpoints == null || !pinpoints.Any())
+                {
+                    _logger.LogInformation("No pinpoints found.");
+                    return Ok(new List<Pinpoint>()); // Return an empty list
+                }
+
+                _logger.LogInformation($"Fetched {pinpoints.Count()} pinpoints.");
                 return Ok(pinpoints);
             }
             catch (Exception ex)
@@ -44,7 +50,6 @@ namespace Eksamen2024.Controllers
         {
             if (!ModelState.IsValid)
             {
-                _logger.LogWarning("Invalid ModelState detected during pinpoint creation.");
                 return BadRequest(new { Message = "Invalid data." });
             }
 
@@ -53,14 +58,17 @@ namespace Eksamen2024.Controllers
                 var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out var userId))
                 {
-                    _logger.LogWarning("User is not authenticated or userId is invalid.");
                     return Unauthorized(new { Message = "User is not authenticated." });
                 }
 
                 pinpoint.UserId = userId;
-                await _pinpointRepository.Create(pinpoint, userId);
 
-                _logger.LogInformation($"Pinpoint created: {pinpoint.Name} by User {userId}");
+                if (pinpoint.PinpointId > 0)
+                {
+                    pinpoint.PinpointId = 0; // EF Core should generate a new ID
+                }
+
+                await _pinpointRepository.Create(pinpoint, userId);
                 return CreatedAtAction(nameof(GetPinpoints), new { id = pinpoint.PinpointId }, pinpoint);
             }
             catch (Exception ex)
@@ -76,7 +84,6 @@ namespace Eksamen2024.Controllers
         {
             if (id != updatedPinpoint.PinpointId)
             {
-                _logger.LogWarning($"Mismatched ID: URL ID {id} does not match body ID {updatedPinpoint.PinpointId}");
                 return BadRequest(new { Message = "Mismatched ID." });
             }
 
@@ -85,7 +92,6 @@ namespace Eksamen2024.Controllers
                 var existingPinpoint = await _pinpointRepository.GetPinpointById(id);
                 if (existingPinpoint == null)
                 {
-                    _logger.LogWarning($"Pinpoint with ID {id} not found.");
                     return NotFound(new { Message = "Pinpoint not found." });
                 }
 
@@ -95,7 +101,6 @@ namespace Eksamen2024.Controllers
                 existingPinpoint.Longitude = updatedPinpoint.Longitude;
 
                 await _pinpointRepository.Update(existingPinpoint);
-                _logger.LogInformation($"Pinpoint with ID {id} successfully updated.");
                 return NoContent();
             }
             catch (Exception ex)
@@ -114,11 +119,9 @@ namespace Eksamen2024.Controllers
                 var deleted = await _pinpointRepository.Delete(id);
                 if (!deleted)
                 {
-                    _logger.LogWarning($"Pinpoint with ID {id} not found for deletion.");
                     return NotFound(new { Message = "Pinpoint not found." });
                 }
 
-                _logger.LogInformation($"Pinpoint with ID {id} successfully deleted.");
                 return NoContent();
             }
             catch (Exception ex)
