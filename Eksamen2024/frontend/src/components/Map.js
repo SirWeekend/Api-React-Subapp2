@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { createPinpoint } from '../apiService';
+import { createPinpoint, updatePinpoint, deletePinpoint } from '../apiService';
 
-const Map = ({ pinpoints = [], onPinpointAdded }) => {
+const Map = ({ pinpoints = [], onPinpointAdded, onPinpointUpdated, onPinpointDeleted }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -50,10 +50,7 @@ const Map = ({ pinpoints = [], onPinpointAdded }) => {
             onPinpointAdded(createdPinpoint);
             mapRef.current.closePopup();
 
-            // Legg til markør på kartet for det nye pinpointet
-            L.marker([createdPinpoint.latitude, createdPinpoint.longitude])
-              .addTo(mapRef.current)
-              .bindPopup(`<b>${createdPinpoint.name}</b><br>${createdPinpoint.description}`);
+            addPinpointMarker(createdPinpoint); // Legg til ny markør
           } catch (error) {
             console.error('Error creating pinpoint:', error);
             alert('Failed to create pinpoint.');
@@ -62,21 +59,79 @@ const Map = ({ pinpoints = [], onPinpointAdded }) => {
       });
     }
 
-    // Oppdater eksisterende pinpoints på kartet
-    console.log('Updating map with pinpoints:', pinpoints);
+    // Fjern eksisterende markører for å oppdatere dem
+    mapRef.current.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        layer.remove();
+      }
+    });
 
-    pinpoints.forEach((pinpoint) => {
-      if (!pinpoint || !pinpoint.latitude || !pinpoint.longitude) {
-        console.warn(`Skipping invalid pinpoint on map: ${JSON.stringify(pinpoint)}`);
-        return; // Hopp over ugyldige pinpoints
+    // Legg til markører for eksisterende pinpoints
+    pinpoints.forEach(addPinpointMarker);
+  }, [pinpoints]);
+
+  // Funksjon for å legge til markører med knapper
+  const addPinpointMarker = (pinpoint) => {
+    const marker = L.marker([pinpoint.latitude, pinpoint.longitude]).addTo(mapRef.current);
+
+    const popupContent = `
+      <div>
+        <strong>${pinpoint.name}</strong><br>
+        ${pinpoint.description}<br><br>
+        <button id="edit-${pinpoint.pinpointId}" class="popup-btn">Edit Pinpoint</button>
+        <button id="delete-${pinpoint.pinpointId}" class="popup-btn">Delete Pinpoint</button>
+      </div>
+    `;
+
+    marker.bindPopup(popupContent);
+
+    // Når pop-up åpnes, legg til event listeners
+    marker.on('popupopen', () => {
+      const editButton = document.getElementById(`edit-${pinpoint.pinpointId}`);
+      const deleteButton = document.getElementById(`delete-${pinpoint.pinpointId}`);
+
+      if (editButton) {
+        editButton.addEventListener('click', () => {
+          const updatedName = prompt('Enter new name:', pinpoint.name);
+          const updatedDescription = prompt('Enter new description:', pinpoint.description);
+
+          if (updatedName && updatedDescription) {
+            const updatedPinpoint = {
+              ...pinpoint,
+              name: updatedName,
+              description: updatedDescription,
+            };
+
+            updatePinpoint(pinpoint.pinpointId, updatedPinpoint)
+              .then(() => {
+                onPinpointUpdated(updatedPinpoint);
+                marker.closePopup();
+              })
+              .catch((err) => {
+                console.error('Error updating pinpoint:', err);
+                alert('Failed to update pinpoint.');
+              });
+          }
+        });
       }
 
-      console.log(`Adding pinpoint to map: ID=${pinpoint.pinpointId}, Name=${pinpoint.name}`);
-      L.marker([pinpoint.latitude, pinpoint.longitude])
-        .addTo(mapRef.current)
-        .bindPopup(`<b>${pinpoint.name}</b><br>${pinpoint.description}`);
+      if (deleteButton) {
+        deleteButton.addEventListener('click', () => {
+          if (window.confirm('Are you sure you want to delete this pinpoint?')) {
+            deletePinpoint(pinpoint.pinpointId)
+              .then(() => {
+                onPinpointDeleted(pinpoint.pinpointId);
+                marker.remove();
+              })
+              .catch((err) => {
+                console.error('Error deleting pinpoint:', err);
+                alert('Failed to delete pinpoint.');
+              });
+          }
+        });
+      }
     });
-  }, [pinpoints]);
+  };
 
   return <div id="map" style={{ height: '500px', width: '100%' }}></div>;
 };

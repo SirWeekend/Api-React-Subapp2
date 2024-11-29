@@ -21,44 +21,47 @@ function App() {
     try {
       const data = await fetchPinpoints();
       console.log('Pinpoints fetched from backend:', data);
-  
-      // Sjekk dataene før de settes i state
       setPinpoints(data);
     } catch (error) {
       console.error('Error fetching pinpoints:', error);
     }
   };
-  
 
   const handlePinpointAdded = (newPinpoint) => {
     setPinpoints((prevPinpoints) => [...prevPinpoints, newPinpoint]);
+  };
+
+  const handlePinpointUpdated = (updatedPinpoint) => {
+    setPinpoints((prev) =>
+      prev.map((p) =>
+        p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p
+      )
+    );
+    console.log('Pinpoint updated in state:', updatedPinpoint);
+  };
+
+  const handlePinpointDeleted = (id) => {
+    setPinpoints((prevPinpoints) =>
+      prevPinpoints.filter((p) => p.pinpointId !== id)
+    );
+    console.log('Pinpoint deleted from state with ID:', id);
   };
 
   const handleUpdate = async (updatedPinpoint) => {
     try {
       console.log('Sending data to update pinpoint:', updatedPinpoint);
       await updatePinpoint(updatedPinpoint.pinpointId, updatedPinpoint);
-      console.log('Pinpoint updated successfully:', updatedPinpoint);
-      setPinpoints((prev) =>
-        prev.map((p) =>
-          p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p
-        )
-      );
+      handlePinpointUpdated(updatedPinpoint);
       setSelectedPinpoint(null);
     } catch (error) {
       console.error('Error updating pinpoint:', error.response?.data || error.message);
     }
   };
-  
 
   const handleDelete = async (id) => {
     try {
       await deletePinpoint(id);
-      console.log('Pinpoint deleted with ID:', id);
-
-      setPinpoints((prevPinpoints) =>
-        prevPinpoints.filter((p) => p.pinpointId !== id)
-      );
+      handlePinpointDeleted(id);
     } catch (error) {
       console.error('Error deleting pinpoint:', error);
     }
@@ -96,6 +99,8 @@ function App() {
           <Map
             pinpoints={pinpoints}
             onPinpointAdded={handlePinpointAdded}
+            onPinpointUpdated={handlePinpointUpdated}
+            onPinpointDeleted={handlePinpointDeleted}
           />
           <PinpointList
             pinpoints={pinpoints}
