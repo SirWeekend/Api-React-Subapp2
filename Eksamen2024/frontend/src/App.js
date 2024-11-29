@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import PinpointList from './components/PinpointList';
-import PinpointForm from './components/PinpointForm';
 import Map from './components/Map';
 import Login from './components/Login';
 import Register from './components/Register';
-import {
-  fetchPinpoints,
-  createPinpoint,
-  updatePinpoint,
-  deletePinpoint,
-  logoutUser,
-} from './apiService';
+import { fetchPinpoints, createPinpoint, updatePinpoint, deletePinpoint, logoutUser } from './apiService';
 
 function App() {
-  const [pinpoints, setPinpoints] = useState([]); // State for pinpoints
-  const [selectedPinpoint, setSelectedPinpoint] = useState(null); // State for valgt pinpoint
-  const [user, setUser] = useState(null); // State for brukerinformasjon
+  const [pinpoints, setPinpoints] = useState([]);
+  const [user, setUser] = useState(null);
 
   const loadPinpoints = async () => {
     try {
@@ -31,28 +22,15 @@ function App() {
     setPinpoints((prevPinpoints) => [...prevPinpoints, newPinpoint]);
   };
 
-  const handlePinpointUpdated = (updatedPinpoint) => {
-    setPinpoints((prev) =>
-      prev.map((p) =>
-        p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p
-      )
-    );
-    console.log('Pinpoint updated in state:', updatedPinpoint);
-  };
-
-  const handlePinpointDeleted = (id) => {
-    setPinpoints((prevPinpoints) =>
-      prevPinpoints.filter((p) => p.pinpointId !== id)
-    );
-    console.log('Pinpoint deleted from state with ID:', id);
-  };
-
   const handleUpdate = async (updatedPinpoint) => {
     try {
-      console.log('Sending data to update pinpoint:', updatedPinpoint);
+      console.log('Updating pinpoint:', updatedPinpoint);
       await updatePinpoint(updatedPinpoint.pinpointId, updatedPinpoint);
-      handlePinpointUpdated(updatedPinpoint);
-      setSelectedPinpoint(null);
+      setPinpoints((prev) =>
+        prev.map((p) =>
+          p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p
+        )
+      );
     } catch (error) {
       console.error('Error updating pinpoint:', error.response?.data || error.message);
     }
@@ -61,7 +39,10 @@ function App() {
   const handleDelete = async (id) => {
     try {
       await deletePinpoint(id);
-      handlePinpointDeleted(id);
+      console.log('Pinpoint deleted with ID:', id);
+      setPinpoints((prevPinpoints) =>
+        prevPinpoints.filter((p) => p.pinpointId !== id)
+      );
     } catch (error) {
       console.error('Error deleting pinpoint:', error);
     }
@@ -69,8 +50,7 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      console.log('User logged in:', user);
-      loadPinpoints(); // Last pinpoints når brukeren logger inn
+      loadPinpoints();
     }
   }, [user]);
 
@@ -78,43 +58,38 @@ function App() {
     try {
       await logoutUser();
       console.log('User logged out');
-      setUser(null); // Nullstill brukerdata
+      setUser(null);
     } catch (error) {
       console.error('Error during logout:', error);
     }
   };
 
   return (
-    <div>
-      <h1>Pinpoints App</h1>
-      {!user ? (
-        <>
-          <Login setUser={setUser} />
-          <Register />
-        </>
-      ) : (
-        <>
-          <p>Welcome, {user.username}!</p>
-          <button onClick={handleLogout}>Logout</button>
+    <div style={{ display: 'flex', height: '100vh' }}>
+      <div style={{ width: '250px', backgroundColor: '#f4f4f4', padding: '10px' }}>
+        <h1>Pinpoints App</h1>
+        {!user ? (
+          <>
+            <Login setUser={setUser} />
+            <Register />
+          </>
+        ) : (
+          <>
+            <p>Welcome, {user.username}!</p>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        )}
+      </div>
+      <div style={{ flex: 1 }}>
+        {user && (
           <Map
             pinpoints={pinpoints}
             onPinpointAdded={handlePinpointAdded}
-            onPinpointUpdated={handlePinpointUpdated}
-            onPinpointDeleted={handlePinpointDeleted}
+            onPinpointUpdated={handleUpdate}
+            onPinpointDeleted={handleDelete}
           />
-          <PinpointList
-            pinpoints={pinpoints}
-            onDelete={handleDelete}
-            onEdit={setSelectedPinpoint}
-          />
-          <PinpointForm
-            onCreate={handlePinpointAdded}
-            onUpdate={handleUpdate}
-            selectedPinpoint={selectedPinpoint}
-            clearSelectedPinpoint={() => setSelectedPinpoint(null)}
-          />
-        </>
-      )}
+        )}
+      </div>
     </div>
   );
 }
