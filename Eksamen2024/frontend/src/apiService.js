@@ -1,18 +1,14 @@
 import axios from 'axios';
 
-// Oppdatert base-URL
 const API_BASE_URL = 'http://localhost:5091/api';
 
-// Funksjon for å hente token fra localStorage
 const getToken = () => localStorage.getItem('token');
 
-// Konfigurer Axios til å inkludere Authorization-header og `withCredentials`
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
-  withCredentials: true, // Sørger for at cookies og cred blir sendt
+  withCredentials: true,
 });
 
-// Legger til Authorization-header i alle forespørsler
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = getToken();
@@ -22,56 +18,18 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.error('Error with request interceptor:', error); // Logging for feil i forespørsel
+    console.error('Error with request interceptor:', error);
     return Promise.reject(error);
   }
 );
 
-// API-kall
-export const loginUser = async (username, password) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/Bruker/Login`, { username, password });
-    const token = response.data.token; // Forutsetter at serveren returnerer et token
-    if (token) {
-      localStorage.setItem('token', token); // Lagre token i localStorage
-    }
-    console.log('Login successful:', response.data); // Logging for vellykket innlogging
-    return response.data;
-  } catch (error) {
-    console.error('Error during login:', error.response?.data || error.message); // Logging for feil ved innlogging
-    throw error;
-  }
-};
-
-export const registerUser = async (username, email, password) => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/Bruker/Registrer`, { username, email, password });
-    console.log('User registered successfully:', response.data); // Logging for vellykket registrering
-    return response.data;
-  } catch (error) {
-    console.error('Error during registration:', error.response?.data || error.message); // Logging for feil ved registrering
-    throw error;
-  }
-};
-
-export const logoutUser = async () => {
-  try {
-    await axios.post(`${API_BASE_URL}/Bruker/Logout`);
-    localStorage.removeItem('token'); // Fjern token ved utlogging
-    console.log('User logged out successfully'); // Logging for utlogging
-  } catch (error) {
-    console.error('Error during logout:', error.response?.data || error.message); // Logging for feil ved utlogging
-    throw error;
-  }
-};
-
 export const fetchPinpoints = async () => {
   try {
     const response = await axiosInstance.get('/pinpoint');
-    console.log('Pinpoints fetched:', response.data); // Logging for vellykket pinpoint-henting
-    return response.data.$values || response.data; // Tilpass etter JSON-struktur
+    console.log('Pinpoints fetched:', response.data);
+    return response.data.$values || response.data;
   } catch (error) {
-    console.error('Error fetching pinpoints:', error.response?.data || error.message); // Logging for feil ved pinpoint-henting
+    console.error('Error fetching pinpoints:', error.response?.data || error.message);
     throw error;
   }
 };
@@ -79,10 +37,10 @@ export const fetchPinpoints = async () => {
 export const createPinpoint = async (pinpoint) => {
   try {
     const response = await axiosInstance.post('/pinpoint', pinpoint);
-    console.log('Pinpoint created:', response.data); // Logging for vellykket pinpoint-opprettelse
+    console.log('Pinpoint created:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error creating pinpoint:', error.response?.data || error.message); // Logging for feil ved oppretting
+    console.error('Error creating pinpoint:', error.response?.data || error.message);
     throw error;
   }
 };
@@ -90,10 +48,10 @@ export const createPinpoint = async (pinpoint) => {
 export const updatePinpoint = async (id, pinpoint) => {
   try {
     const response = await axiosInstance.put(`/pinpoint/${id}`, pinpoint);
-    console.log('Pinpoint updated:', response.data); // Logging for vellykket oppdatering
+    console.log('Pinpoint updated:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error updating pinpoint:', error.response?.data || error.message); // Logging for feil ved oppdatering
+    console.error('Error updating pinpoint:', error.response?.data || error.message);
     throw error;
   }
 };
@@ -101,31 +59,46 @@ export const updatePinpoint = async (id, pinpoint) => {
 export const deletePinpoint = async (id) => {
   try {
     await axiosInstance.delete(`/pinpoint/${id}`);
-    console.log('Pinpoint deleted with ID:', id); // Logging for vellykket sletting
+    console.log('Pinpoint deleted with ID:', id);
   } catch (error) {
-    console.error('Error deleting pinpoint:', error.response?.data || error.message); // Logging for feil ved sletting
+    console.error('Error deleting pinpoint:', error.response?.data || error.message);
     throw error;
   }
 };
 
-export const fetchComments = async (pinpointId) => {
+export const loginUser = async (username, password) => {
   try {
-    const response = await axiosInstance.get(`/pinpoint/${pinpointId}/comments`);
-    console.log('Comments fetched for pinpoint:', pinpointId, response.data); // Logging for vellykket kommentar-henting
+    const response = await axios.post(`${API_BASE_URL}/Bruker/Login`, { username, password });
+    const token = response.data.token;
+    if (token) {
+      localStorage.setItem('token', token);
+    }
+    console.log('Login successful:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error fetching comments:', error.response?.data || error.message); // Logging for feil ved kommentar-henting
+    console.error('Error during login:', error.response?.data || error.message);
     throw error;
   }
 };
 
-export const addComment = async (pinpointId, commentText) => {
+export const registerUser = async (username, email, password) => {
   try {
-    const response = await axiosInstance.post(`/pinpoint/${pinpointId}/comments`, { text: commentText });
-    console.log('Comment added to pinpoint:', pinpointId, response.data); // Logging for vellykket kommentar-leggelse
+    const response = await axios.post(`${API_BASE_URL}/Bruker/Registrer`, { username, email, password });
+    console.log('User registered successfully:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error adding comment:', error.response?.data || error.message); // Logging for feil ved kommentar-leggelse
+    console.error('Error during registration:', error.response?.data || error.message);
+    throw error;
+  }
+};
+
+export const logoutUser = async () => {
+  try {
+    await axios.post(`${API_BASE_URL}/Bruker/Logout`);
+    localStorage.removeItem('token');
+    console.log('User logged out successfully');
+  } catch (error) {
+    console.error('Error during logout:', error.response?.data || error.message);
     throw error;
   }
 };

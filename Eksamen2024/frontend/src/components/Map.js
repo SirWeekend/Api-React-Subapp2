@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { createPinpoint } from '../apiService'; // Importer API-kallet for å opprette pinpoint
+import { createPinpoint } from '../apiService';
 
 const Map = ({ pinpoints, onPinpointAdded }) => {
   const mapRef = useRef(null);
@@ -15,11 +15,11 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
         attribution: '&copy; OpenStreetMap contributors',
       }).addTo(mapRef.current);
 
-      // Event listener for å legge til pinpoint ved klikk på kartet
+      // Event listener for å legge til pinpoint ved klikk
       mapRef.current.on('click', async (e) => {
         const { lat, lng } = e.latlng;
 
-        // Åpne popup-skjema ved klikk
+        // Popup-skjema
         const popup = L.popup()
           .setLatLng(e.latlng)
           .setContent(`
@@ -61,7 +61,7 @@ const Map = ({ pinpoints, onPinpointAdded }) => {
       });
     }
 
-    // Fjern tidligere markører
+    // Fjern gamle markører
     mapRef.current.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         mapRef.current.removeLayer(layer);

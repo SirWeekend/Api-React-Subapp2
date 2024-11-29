@@ -4,14 +4,12 @@ import PinpointForm from './components/PinpointForm';
 import Map from './components/Map';
 import Login from './components/Login';
 import Register from './components/Register';
-import { logoutUser } from './apiService';
 import {
   fetchPinpoints,
-  createPinpoint as apiCreatePinpoint,
-  updatePinpoint as apiUpdatePinpoint,
-  deletePinpoint as apiDeletePinpoint,
-  addComment,
-  fetchComments,
+  createPinpoint,
+  updatePinpoint,
+  deletePinpoint,
+  logoutUser,
 } from './apiService';
 
 function App() {
@@ -22,27 +20,27 @@ function App() {
   const loadPinpoints = async () => {
     try {
       const data = await fetchPinpoints();
-      console.log('Fetched pinpoints:', data); // Logging for pinpoint-henting
+      console.log('Fetched pinpoints:', data);
       setPinpoints(data);
     } catch (error) {
       console.error('Error fetching pinpoints:', error);
     }
   };
 
-  const handleCreate = async (newPinpoint) => {
+  const handlePinpointAdded = async (newPinpoint) => {
     try {
-      const createdPinpoint = await apiCreatePinpoint(newPinpoint);
-      console.log('Pinpoint created:', createdPinpoint); // Logging for oppretting
-      setPinpoints([...pinpoints, createdPinpoint]);
+      const createdPinpoint = await createPinpoint(newPinpoint);
+      console.log('Pinpoint added from map:', createdPinpoint);
+      setPinpoints((prevPinpoints) => [...prevPinpoints, createdPinpoint]);
     } catch (error) {
-      console.error('Error creating pinpoint:', error);
+      console.error('Error adding pinpoint:', error);
     }
   };
 
   const handleUpdate = async (updatedPinpoint) => {
     try {
-      await apiUpdatePinpoint(updatedPinpoint.pinpointId, updatedPinpoint);
-      console.log('Pinpoint updated:', updatedPinpoint); // Logging for oppdatering
+      await updatePinpoint(updatedPinpoint.pinpointId, updatedPinpoint);
+      console.log('Pinpoint updated:', updatedPinpoint);
       setPinpoints((prev) =>
         prev.map((p) => (p.pinpointId === updatedPinpoint.pinpointId ? updatedPinpoint : p))
       );
@@ -54,9 +52,9 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await apiDeletePinpoint(id);
-      console.log('Pinpoint deleted with ID:', id); // Logging for sletting
-      setPinpoints(pinpoints.filter((pinpoint) => pinpoint.pinpointId !== id));
+      await deletePinpoint(id);
+      console.log('Pinpoint deleted with ID:', id);
+      setPinpoints((prevPinpoints) => prevPinpoints.filter((p) => p.pinpointId !== id));
     } catch (error) {
       console.error('Error deleting pinpoint:', error);
     }
@@ -64,15 +62,19 @@ function App() {
 
   useEffect(() => {
     if (user) {
-      console.log('User logged in:', user); // Logging for innlogging
+      console.log('User logged in:', user);
       loadPinpoints();
     }
   }, [user]);
 
   const handleLogout = async () => {
-    await logoutUser();
-    console.log('User logged out'); // Logging for utlogging
-    setUser(null);
+    try {
+      await logoutUser();
+      console.log('User logged out');
+      setUser(null);
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   return (
@@ -87,14 +89,14 @@ function App() {
         <>
           <p>Welcome, {user.username}!</p>
           <button onClick={handleLogout}>Logout</button>
-          <Map pinpoints={pinpoints} />
+          <Map pinpoints={pinpoints} onPinpointAdded={handlePinpointAdded} />
           <PinpointList
             pinpoints={pinpoints}
             onDelete={handleDelete}
             onEdit={setSelectedPinpoint}
           />
           <PinpointForm
-            onCreate={handleCreate}
+            onCreate={handlePinpointAdded}
             onUpdate={handleUpdate}
             selectedPinpoint={selectedPinpoint}
             clearSelectedPinpoint={() => setSelectedPinpoint(null)}

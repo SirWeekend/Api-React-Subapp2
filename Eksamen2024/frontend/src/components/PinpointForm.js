@@ -32,28 +32,28 @@ const PinpointForm = ({ onCreate, onUpdate, selectedPinpoint, clearSelectedPinpo
         <input
           type="text"
           placeholder="Name"
-          value={pinpoint.name}
+          value={pinpoint.name || ''}
           onChange={(e) => setPinpoint({ ...pinpoint, name: e.target.value })}
           required
         />
         <input
           type="text"
           placeholder="Description"
-          value={pinpoint.description}
+          value={pinpoint.description || ''}
           onChange={(e) => setPinpoint({ ...pinpoint, description: e.target.value })}
           required
         />
         <input
           type="number"
           placeholder="Latitude"
-          value={pinpoint.latitude}
+          value={pinpoint.latitude || ''}
           onChange={(e) => setPinpoint({ ...pinpoint, latitude: parseFloat(e.target.value) })}
           required
         />
         <input
           type="number"
           placeholder="Longitude"
-          value={pinpoint.longitude}
+          value={pinpoint.longitude || ''}
           onChange={(e) => setPinpoint({ ...pinpoint, longitude: parseFloat(e.target.value) })}
           required
         />
