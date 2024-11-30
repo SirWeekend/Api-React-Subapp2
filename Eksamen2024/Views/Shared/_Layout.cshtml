@@ -15,7 +15,7 @@
     <!-- Sidebar -->
     <div class="col-md-3" id="sidebar">
         <ul class="list-group">
-            <div id= meny-ikon>
+            <div id= "meny-ikon">
                 <li class="list-group-item">
                     <i class="fas fa-home"></i>
                     <a asp-controller="Home" asp-action="Index">Hjem</a>
@@ -38,22 +38,22 @@
     var username = TempData["Username"] as string;
         }
 
-            @if (!string.IsNullOrEmpty(username))
-                {
-                     <h2>Hei, @username!</h2>
-                    }
+        @if (!string.IsNullOrEmpty(username))
+        {
+            <h2>Hei, @username!</h2>
+        }
 
-        
         <div id="login-link">
-            @if (User.Identity.IsAuthenticated)
-{
-    <a href="@Url.Action("Logout", "Bruker")">Logg ut</a>
-}
-else
-{
-    <a href="@Url.Action("Login", "Bruker")">Logg inn</a>
-}
+            @if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <a href="@Url.Action("Logout", "Bruker")">Logg ut</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Login", "Bruker")">Logg inn</a>
+            }
         </div>
+
     </div>
 
     <!-- Main Content (Kartet) -->

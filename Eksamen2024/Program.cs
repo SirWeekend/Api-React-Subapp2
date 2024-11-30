@@ -66,7 +66,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowFrontend"); // Aktiverer CORS-policyen
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
